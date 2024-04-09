@@ -1,32 +1,19 @@
 local cmp = require("cmp")
 
-cmp.setup {
-    sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
+cmp.setup({
+	sources = {
+		{ name = "nvim_lsp", keyword_length = 1 },
+		{ name = "luasnip", keyword_length = 1 },
+		{ name = "buffer", keyword_length = 1 },
+        { name = "path", keyword_length = 1 },
+	},
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
-    snippet = {
-        expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-        end,
-    },
-    preselect = "item",
-    completion = {
-        completeopt = "menu,menuone,noinsert"
-    },
-    mapping = {
-        ["<cr>"] = cmp.mapping.confirm({ select = true }),
-        ["<esc>"] = cmp.mapping.close(),
-    }
-}
-
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    }),
-    matching = { disallow_symbol_nonprefix_matching = false }
+	mapping = cmp.mapping.preset.insert({
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-l>"] = cmp.mapping.complete(),
+		["<Esc>"] = cmp.mapping.abort(),
+	}),
 })

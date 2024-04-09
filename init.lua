@@ -19,6 +19,9 @@ package.cpath = package.cpath .. ";" .. table.concat(luarocks_cpath, ";")
 
 vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, "lib", "luarocks", "rocks-5.1", "*", "*"))
 
+-- ??
+vim.loader.enable()
+
 -- Key Mappings
 vim.g.mapleader = " "
 require("mappings")
@@ -33,10 +36,15 @@ vim.opt.expandtab = true
 vim.bo.softtabstop = 2
 vim.o.timeoutlen = 200
 vim.o.clipboard = "unnamedplus"
-vim.wo.fillchars='eob: '
+vim.wo.fillchars = "eob: "
+
+-- Completion???
+vim.opt.completeopt = {'menuone', 'noselect', 'noinsert'}
+vim.opt.shortmess = vim.opt.shortmess + { c = true}
+vim.api.nvim_set_option('updatetime', 300)
 
 -- Fixing the god awful float background colours
-vim.api.nvim_set_hl(0, "FloatBorder", {bg="#3B4252", fg="#5E81AC"})
-vim.api.nvim_set_hl(0, "NormalFloat", {bg="#3B4252"})
-vim.api.nvim_set_hl(0, "TelescopeNormal", {bg="#3B4252"})
-vim.api.nvim_set_hl(0, "TelescopeBorder", {bg="#3B4252"})
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#3B4252", fg = "#5E81AC" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3B4252" })
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#1d1f21" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#1d1f21" })

@@ -1,7 +1,7 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
-function setup_colours()
+local function setup_colours()
     return {
         bright_bg = utils.get_highlight("Folded").bg,
         bright_fg = utils.get_highlight("Folded").fg,
