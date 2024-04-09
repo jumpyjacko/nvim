@@ -13,13 +13,15 @@
 "todo-comments.nvim" = "1.2.0"
 "better-escape.nvim" = "scm"
 "telescope.nvim" = "scm"
+"heirline.nvim" = "1.0.3"
+nvim-autopairs = "scm"
+"gitsigns.nvim" = { git = "lewis6991/gitsigns.nvim" }
+
 "mason.nvim" = "1.10.0"
 "mason-lspconfig.nvim" = "1.27.0"
 luasnip = "2.2.0"
 cmp_luasnip = "scm"
-nvim-cmp = "0.0.1"
-nvim-autopairs = "scm"
-"heirline.nvim" = "1.0.3"
+nvim-cmp = "dev"
 
 "none-ls.nvim" = { git = "nvimtools/none-ls.nvim" }
 "mason-null-ls.nvim" = { git = "jay-babu/mason-null-ls.nvim" }

@@ -24,6 +24,8 @@ vim.g.mapleader = " "
 require("mappings")
 
 -- General Vi/m Options
+vim.wo.number = true
+vim.opt.showmode = false
 vim.wo.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -31,6 +33,7 @@ vim.opt.expandtab = true
 vim.bo.softtabstop = 2
 vim.o.timeoutlen = 200
 vim.o.clipboard = "unnamedplus"
+vim.wo.fillchars='eob: '
 
 -- Fixing the god awful float background colours
 vim.api.nvim_set_hl(0, "FloatBorder", {bg="#3B4252", fg="#5E81AC"})

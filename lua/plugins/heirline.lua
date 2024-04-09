@@ -1,25 +1,35 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
-local colors = {
-    bright_bg = utils.get_highlight("Folded").bg,
-    bright_fg = utils.get_highlight("Folded").fg,
-    red = utils.get_highlight("DiagnosticError").fg,
-    dark_red = utils.get_highlight("DiffDelete").bg,
-    green = utils.get_highlight("String").fg,
-    blue = utils.get_highlight("Function").fg,
-    gray = utils.get_highlight("NonText").fg,
-    orange = utils.get_highlight("Constant").fg,
-    purple = utils.get_highlight("Statement").fg,
-    cyan = utils.get_highlight("Special").fg,
-    diag_warn = utils.get_highlight("DiagnosticWarn").fg,
-    diag_error = utils.get_highlight("DiagnosticError").fg,
-    diag_hint = utils.get_highlight("DiagnosticHint").fg,
-    diag_info = utils.get_highlight("DiagnosticInfo").fg,
-    git_del = utils.get_highlight("diffDeleted").fg,
-    git_add = utils.get_highlight("diffAdded").fg,
-    git_change = utils.get_highlight("diffChanged").fg,
-}
+function setup_colours()
+    return {
+        bright_bg = utils.get_highlight("Folded").bg,
+        bright_fg = utils.get_highlight("Folded").fg,
+        red = utils.get_highlight("DiagnosticError").fg,
+        dark_red = utils.get_highlight("DiffDelete").bg,
+        green = utils.get_highlight("DiagnosticOk").fg,
+        blue = utils.get_highlight("Function").fg,
+        gray = utils.get_highlight("NonText").fg,
+        orange = utils.get_highlight("Constant").fg,
+        purple = utils.get_highlight("Statement").fg,
+        cyan = utils.get_highlight("Special").fg,
+        diag_warn = utils.get_highlight("DiagnosticWarn").fg,
+        diag_error = utils.get_highlight("DiagnosticError").fg,
+        diag_hint = utils.get_highlight("DiagnosticHint").fg,
+        diag_info = utils.get_highlight("DiagnosticInfo").fg,
+        git_del = utils.get_highlight("diffDeleted").fg,
+        git_add = utils.get_highlight("diffAdded").fg,
+        git_change = utils.get_highlight("diffChanged").fg,
+    }
+end
+
+vim.api.nvim_create_augroup("Heirline", { clear = true })
+vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = function()
+        utils.on_colorscheme(setup_colours)
+    end,
+    group = "Heirline",
+})
 
 local ViMode = {
     init = function(self)
@@ -63,7 +73,7 @@ local ViMode = {
             ["!"] = "SHELL",
             t = "TERMINAL",
         },
-        mode_colors = {
+        mode_colours = {
             n = "blue",
             i = "green",
             v = "purple",
@@ -80,11 +90,11 @@ local ViMode = {
         },
     },
     provider = function(self)
-        return "▎ %2("..self.mode_names[self.mode].."%) "
+        return "▎ %2("..self.mode_names[self.mode].."%)"
     end,
     hl = function(self)
         local mode = self.mode:sub(1, 1)
-        return { fg = self.mode_colors[mode], bold = true, }
+        return { fg = self.mode_colours[mode], bold = true, }
     end,
     update = {
         "ModeChanged",
@@ -119,6 +129,7 @@ local Ruler = {
     -- %c = column number
     -- %P = percentage through file of displayed window
     provider = "%7(%l/%3L%):%2c %P",
+    hl = { bg = "bright_bg" },
 }
 
 local ScrollBar ={
@@ -154,6 +165,30 @@ local LSPActive = {
     hl = { fg = "green", bold = true },
 }
 
+local FileNameBlock = {
+    -- let's first set up some attributes needed by this component and it's children
+    init = function(self)
+        self.filename = vim.api.nvim_buf_get_name(0)
+    end,
+}
+
+local FileFlags = {
+    {
+        condition = function()
+            return vim.bo.modified
+        end,
+        provider = "[+]",
+        hl = { fg = "green" },
+    },
+    {
+        condition = function()
+            return not vim.bo.modifiable or vim.bo.readonly
+        end,
+        provider = "",
+        hl = { fg = "orange" },
+    },
+}
+
 local FileType = {
     provide = function()
         return string.upper(vim.bo.filetype)
@@ -161,21 +196,52 @@ local FileType = {
     hl = { fg = utils.get_highlight("Type").fg, bold = true },
 }
 
-local Align = { provider = "%=" }
-local Space = { provider = " " }
+local FileName = {
+    init = function(self)
+        self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
+        if self.lfilename == "" then self.lfilename = "[No Name]" end
+    end,
+    hl = { fg = utils.get_highlight("Directory").fg },
 
-local StatusLine = { ViMode, Space, Git, Space, FileType,
-                     Align, LSPActive, Space, Ruler, Space, ScrollBar }
+    flexible = 2,
 
-local WinBar = {}
+    {
+        provider = function(self)
+            return self.lfilename
+        end,
+    },
+    {
+        provider = function(self)
+            return vim.fn.pathshorten(self.lfilename)
+        end,
+    },
+}
 
-local TabLine = {}
+local FileNameModifer = {
+    hl = function()
+        if vim.bo.modified then
+            -- use `force` because we need to override the child's hl foreground
+            return { fg = "cyan", bold = true, force=true }
+        end
+    end,
+}
+
+FileNameBlock = utils.insert(
+    FileNameBlock,
+    utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
+    FileFlags,
+    { provider = '%<'}
+)
+
+local Align = { provider = "%=", hl = { bg = "bright_bg" } }
+local Space = { provider = " ", hl = {bg = "bright_bg"} }
+
+local StatusLine = { ViMode, Space, Git, Space, FileNameBlock,
+                     Align, LSPActive, Space, FileType, Space, Ruler, Space, ScrollBar }
 
 require("heirline").setup {
     statusline = StatusLine,
-    winbar = WinBar,
-    tabline = TabLine,
     opts = {
-        colors = colors
-    }
+        colors = setup_colours,
+    },
 }
