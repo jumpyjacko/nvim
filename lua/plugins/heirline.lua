@@ -11,7 +11,7 @@ function setup_colours()
         blue = utils.get_highlight("Function").fg,
         gray = utils.get_highlight("NonText").fg,
         orange = utils.get_highlight("Constant").fg,
-        purple = utils.get_highlight("Statement").fg,
+        purple = utils.get_highlight("Conditional").fg,
         cyan = utils.get_highlight("Special").fg,
         diag_warn = utils.get_highlight("DiagnosticWarn").fg,
         diag_error = utils.get_highlight("DiagnosticError").fg,
@@ -113,7 +113,7 @@ local Git = {
         self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
     end,
 
-    hl = { fg = "white" },
+    hl = { fg = "green" },
 
     {   -- git branch name
         provider = function(self)
@@ -226,17 +226,17 @@ local FileNameModifer = {
     end,
 }
 
+local Align = { provider = "%=", hl = { bg = "bright_bg" } }
+local Space = { provider = " ", hl = {bg = "bright_bg"} }
+
 FileNameBlock = utils.insert(
     FileNameBlock,
-    utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
+    utils.insert(FileNameModifer, FileName),
     FileFlags,
     { provider = '%<'}
 )
 
-local Align = { provider = "%=", hl = { bg = "bright_bg" } }
-local Space = { provider = " ", hl = {bg = "bright_bg"} }
-
-local StatusLine = { ViMode, Space, Git, Space, FileNameBlock,
+local StatusLine = { ViMode, Space, Space, Git, Space, Space, FileNameBlock,
                      Align, LSPActive, Space, FileType, Space, Ruler, Space, ScrollBar }
 
 require("heirline").setup {

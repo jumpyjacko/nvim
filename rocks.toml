@@ -28,6 +28,8 @@ nvim-cmp = "dev"
 nvim-lspconfig = "0.1.7"
 cmp-nvim-lsp = "scm"
 rustaceanvim = "^4"
+"mini.base16" = "0.9.0"
+nvim-highlight-colors = { git = "brenoprata10/nvim-highlight-colors"}
 
 [config]
 plugins_dir = "plugins/"
