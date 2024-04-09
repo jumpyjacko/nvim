@@ -1,0 +1,32 @@
+# List of non-Neovim rocks.
+# This includes things like `toml` or other lua packages.
+[rocks]
+
+# List of Neovim plugins to install alongside their versions.
+# If the plugin name contains a dot then you must add quotes to the key name!
+[plugins]
+"rocks.nvim" = "2.20.2"
+"rocks-config.nvim" = "1.3.1"
+"rocks-git.nvim" = "1.4.0"
+
+"which-key.nvim" = "1.6.0"
+"todo-comments.nvim" = "1.2.0"
+"better-escape.nvim" = "scm"
+"telescope.nvim" = "scm"
+"mason.nvim" = "1.10.0"
+"mason-lspconfig.nvim" = "1.27.0"
+luasnip = "2.2.0"
+cmp_luasnip = "scm"
+nvim-cmp = "0.0.1"
+nvim-autopairs = "scm"
+"heirline.nvim" = "1.0.3"
+
+"none-ls.nvim" = { git = "nvimtools/none-ls.nvim" }
+"mason-null-ls.nvim" = { git = "jay-babu/mason-null-ls.nvim" }
+nvim-lspconfig = "0.1.7"
+cmp-nvim-lsp = "scm"
+rustaceanvim = "^4"
+
+[config]
+plugins_dir = "plugins/"
+auto_setup = false
