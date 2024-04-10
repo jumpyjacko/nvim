@@ -2,7 +2,7 @@ require("mini.base16").setup {
   palette = {
     base00 = '#1d1f21', -- Default Background
     base01 = '#1d1f21', -- Lighter Background
-    base02 = '#2b303b', -- Selection Background
+    base02 = '#4b505b', -- Selection Background
     base03 = '#707880', -- Comments, Invisibles, Line Highlighting
     base04 = '#707880', -- Dark Foreground
     base05 = '#c5c8c6', -- Default Foreground
