@@ -9,6 +9,8 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
+vim.g.mapleader = " "
+
 -- Normal mode mappings
 ---- Fast Write/Quit
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
@@ -19,6 +21,13 @@ map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find File" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "List Buffers" })
 map("n", "<leader>fi", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search in file" })
 
+---- Package Mangement
+map("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Open Mason" })
+map("n", "<leader>pe", "<cmd>Rocks edit<cr>", { desc = "Edit rocks.toml" })
+map("n", "<leader>ps", "<cmd>Rocks sync<cr>", { desc = "Sync rocks.toml" })
+map("n", "<leader>pu", "<cmd>Rocks update<cr>", { desc = "Update Rocks packages" })
+
+---- LSP Actions
 map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code Action" })
 map("n", "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<cr>", { desc = "Document Diagnostics" })
 map("n", "<leader>lw", "<cmd>Telescope diagnostics<cr>", { desc = "Workspace Diagnostics" })
@@ -33,8 +42,13 @@ map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Sym
 map("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document Symbols" })
 map("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", { desc = "Workspace Symbols" })
 
+---- Buffer Stuff
 map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
+map("v", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("v", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
+
+map("n", "<leader>c", "<cmd>bd<cr>", { desc = "Close Buffer" })
 
 ---- Colemak Bindings
 map("n", "h", "h", { desc = "Move left" })
@@ -87,9 +101,6 @@ map("n", "<C-W>e", "<C-W>k")
 map("n", "<C-W>i", "<C-W>l")
 
 -- Visual mode mappings
-map("v", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("v", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
-
 ---- Colemak Bindings
 map("v", "h", "h", { desc = "Move left" })
 map("v", "n", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down", expr = true, silent = true })
