@@ -22,6 +22,9 @@ vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, "lib", "luar
 -- ??
 vim.loader.enable()
 
+-- Force colourscheme to load early?
+require("rocks").packadd("mini.base16")
+
 -- Key Mappings
 vim.g.mapleader = " "
 require("mappings")
