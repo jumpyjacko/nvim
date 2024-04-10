@@ -17,10 +17,11 @@ nvim-lspconfig = "0.1.7"
 "none-ls.nvim" = { git = "nvimtools/none-ls.nvim" }
 "mason-null-ls.nvim" = { git = "jay-babu/mason-null-ls.nvim" }
 luasnip = "2.2.0"
-cmp_luasnip = "scm"
+"lspkind.nvim" = "scm"
+cmp_luasnip = { git = "hrsh7th/cmp_luasnip"}
 cmp-nvim-lsp = { git = "hrsh7th/cmp-nvim-lsp"}
-cmp-buffer = "scm"
-cmp-path = "scm"
+cmp-buffer = { git = "hrsh7th/cmp-buffer" }
+cmp-path = { git = "hrsh7th/cmp-buffer" }
 nvim-cmp = { git = "hrsh7th/nvim-cmp" }
 
 rustaceanvim = "4.21.0"

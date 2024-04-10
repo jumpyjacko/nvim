@@ -18,4 +18,7 @@ require("mini.base16").setup {
     base0F = '#96b5b4', -- Keywords
   },
   use_cterm = true,
+  plugins = {
+      default = false,
+  }
 }
