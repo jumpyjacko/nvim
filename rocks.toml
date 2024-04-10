@@ -20,19 +20,20 @@ cmp_luasnip = "scm"
 cmp-nvim-lsp = "scm"
 cmp-buffer = "scm"
 cmp-path = "scm"
-nvim-cmp = "0.0.1"
+nvim-cmp = { git = "hrsh7th/nvim-cmp" }
 
-rustaceanvim = { version = "^4", opt = true }
+rustaceanvim = { version = "4.21.0", opt = true }
 
 "mini.base16" = "0.9.0"
-"which-key.nvim" = { version = "1.6.0", opt = true }
+"which-key.nvim" = { version = "1.6.0" }
 "todo-comments.nvim" = { version = "1.2.0", opt = true }
-"better-escape.nvim" = { version = "scm", opt = true }
-nvim-highlight-colors = { git = "brenoprata10/nvim-highlight-colors", opt = true }
-"telescope.nvim" = { version = "scm", opt = true }
+"better-escape.nvim" = { version = "scm" }
+nvim-highlight-colors = { git = "brenoprata10/nvim-highlight-colors" }
+"telescope.nvim" = { version = "scm" }
 "heirline.nvim" = { version = "1.0.3", opt = true }
-nvim-autopairs = { version = "scm", opt = true }
-"gitsigns.nvim" = { git = "lewis6991/gitsigns.nvim", opt = true }
+nvim-autopairs = { version = "scm" }
+
+"gitsigns.nvim" = { git = "lewis6991/gitsigns.nvim" }
 
 [config]
 plugins_dir = "plugins/"

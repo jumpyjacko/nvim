@@ -10,10 +10,6 @@ require("gitsigns").setup {
     signcolumn = true,
 }
 
-local function get_highlight_color(group)
-    return vim.fn.synIDattr(vim.fn.hlID(group), 'fg')
-end
-
 local colours = {
     bg = vim.fn.synIDattr(vim.fn.hlID('Folded'), 'bg'),
     green = vim.fn.synIDattr(vim.fn.hlID('DiagnosticOk'), 'fg'),
