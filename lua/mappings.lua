@@ -16,7 +16,7 @@ vim.g.mapleader = " "
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Close window" })
 
----- Find Group
+---- Telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find File" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "List Buffers" })
 map("n", "<leader>fi", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search in file" })
@@ -41,6 +41,7 @@ map("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", { desc = "Qui
 map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Symbol" })
 map("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document Symbols" })
 map("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", { desc = "Workspace Symbols" })
+map("n", "<leader>lA", "<cmd>AerialToggle!<cr>", { desc = "Open Code Outline" })
 
 ---- TODO Comment Binds
 map("n", "<leader>tt", "<cmd>TodoTelescope", { desc = "List all TODOs"})
@@ -53,6 +54,10 @@ map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", { desc = "Undo stage
 map("n", "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", { desc = "Stage buffer" })
 map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", { desc = "Reset buffer" })
 map("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", { desc = "View diff" })
+
+---- File Tree
+map("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Open File Tree" })
+map("n", "<leader>o", "<cmd>Neotree focus<cr>", { desc = "Focus File Tree" })
 
 ---- Buffer Stuff
 map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })

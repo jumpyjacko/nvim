@@ -35,8 +35,11 @@ nvim-highlight-colors = { git = "brenoprata10/nvim-highlight-colors" }
 "heirline.nvim" = { version = "1.0.3" }
 nvim-autopairs = { version = "scm" }
 "gitsigns.nvim" = { git = "lewis6991/gitsigns.nvim" }
+"aerial.nvim" = { git = "stevearc/aerial.nvim", opt = true }
 "comment.nvim" = "0.8.0"
 "toggleterm.nvim" = "2.10.0"
+"neo-tree.nvim" = { version = "3.14", opt = true }
+nvim-web-devicons = "0.99"
 
 [config]
 plugins_dir = "plugins/"
