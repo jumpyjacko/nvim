@@ -31,7 +31,7 @@ cmp.setup({
 
 		["<Up>"] = cmp.mapping.select_prev_item(select_opts),
 		["<Down>"] = cmp.mapping.select_next_item(select_opts),
-        
+
 		["<Tab>"] = cmp.mapping(function(fallback)
 			local col = vim.fn.col(".") - 1
 

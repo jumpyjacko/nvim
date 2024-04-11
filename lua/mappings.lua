@@ -1,12 +1,12 @@
 local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true, nowait = true }
-    if opts then
-        if opts.desc then
-            opts.desc = "keymaps.lua: " .. opts.desc
-        end
-        options = vim.tbl_extend('force', options, opts)
-    end
-    vim.keymap.set(mode, lhs, rhs, options)
+	local options = { noremap = true, silent = true, nowait = true }
+	if opts then
+		if opts.desc then
+			opts.desc = "keymaps.lua: " .. opts.desc
+		end
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.keymap.set(mode, lhs, rhs, options)
 end
 
 vim.g.mapleader = " "
@@ -44,7 +44,7 @@ map("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", { des
 map("n", "<leader>lA", "<cmd>AerialToggle!<cr>", { desc = "Open Code Outline" })
 
 ---- TODO Comment Binds
-map("n", "<leader>tt", "<cmd>TodoTelescope", { desc = "List all TODOs"})
+map("n", "<leader>tt", "<cmd>TodoTelescope", { desc = "List all TODOs" })
 
 ---- Git Actions
 map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<cr>", { desc = "Open LazyGit" })
@@ -162,4 +162,3 @@ map("i", "<C-Del>", "<C-o>dw", { desc = "Delete Word (Forward)" })
 
 -- Command-line mode mappings
 -- Uncomment and add command-line mode mappings if needed
-
