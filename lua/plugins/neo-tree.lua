@@ -1,6 +1,14 @@
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
+local border_style = { " ", " ", " ", " ", " ", " ", " ", " " }
+vim.api.nvim_set_hl(0, "FloatBorder", { link = "VisualNC" })
+
 require("neo-tree").setup({
 	close_if_last_window = true,
-	popup_border_style = "none",
+	popup_border_style = border_style,
 	default_component_configs = {
 		name = {
 			trailing_slash = true,
@@ -8,10 +16,10 @@ require("neo-tree").setup({
 		git_status = {
 			symbols = {
 				-- Change type
-				added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-				modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
-				deleted = "", -- this can only be used in the git_status source
-				renamed = "", -- this can only be used in the git_status source
+				added = "",
+				modified = "",
+				deleted = "",
+				renamed = "",
 				-- Status type
 				untracked = "",
 				ignored = "",
@@ -71,6 +79,24 @@ require("neo-tree").setup({
 		follow_current_file = {
 			enabled = true,
 			leave_dirs_open = true, -- NOTE: Might want to disable this if in bigger projects
+		},
+	},
+	event_handlers = {
+		{
+			event = "neo_tree_window_after_open",
+			handler = function(args)
+				if args.position == "left" or args.position == "right" then
+					vim.cmd("wincmd =")
+				end
+			end,
+		},
+		{
+			event = "neo_tree_window_after_close",
+			handler = function(args)
+				if args.position == "left" or args.position == "right" then
+					vim.cmd("wincmd =")
+				end
+			end,
 		},
 	},
 })
