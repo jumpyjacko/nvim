@@ -36,6 +36,7 @@ nvim-highlight-colors = { git = "brenoprata10/nvim-highlight-colors" }
 nvim-autopairs = { version = "scm" }
 "gitsigns.nvim" = { git = "lewis6991/gitsigns.nvim" }
 "comment.nvim" = "0.8.0"
+"toggleterm.nvim" = "2.10.0"
 
 [config]
 plugins_dir = "plugins/"

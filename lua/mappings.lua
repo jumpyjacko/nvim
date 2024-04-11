@@ -42,6 +42,18 @@ map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Sym
 map("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document Symbols" })
 map("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", { desc = "Workspace Symbols" })
 
+---- TODO Comment Binds
+map("n", "<leader>tt", "<cmd>TodoTelescope", { desc = "List all TODOs"})
+
+---- Git Actions
+map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<cr>", { desc = "Open LazyGit" })
+map("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", { desc = "Stage hunk" })
+map("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset hunk" })
+map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", { desc = "Undo stage hunk" })
+map("n", "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", { desc = "Stage buffer" })
+map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", { desc = "Reset buffer" })
+map("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", { desc = "View diff" })
+
 ---- Buffer Stuff
 map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
