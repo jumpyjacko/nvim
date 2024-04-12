@@ -20,6 +20,7 @@ map("n", "<leader>q", "<cmd>q<cr>", { desc = "Close window" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find File" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "List Buffers" })
 map("n", "<leader>fi", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search in file" })
+map("n", "<leader>ft", "<cmd>TodoTelescope", { desc = "List all TODOs" })
 
 ---- Package Mangement
 map("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Open Mason" })
@@ -42,9 +43,6 @@ map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Sym
 map("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document Symbols" })
 map("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", { desc = "Workspace Symbols" })
 map("n", "<leader>lA", "<cmd>AerialToggle!<cr>", { desc = "Open Code Outline" })
-
----- TODO Comment Binds
-map("n", "<leader>tt", "<cmd>TodoTelescope", { desc = "List all TODOs" })
 
 ---- Git Actions
 map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<cr>", { desc = "Open LazyGit" })

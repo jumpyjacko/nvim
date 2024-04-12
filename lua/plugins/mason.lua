@@ -24,9 +24,9 @@ require("mason-lspconfig").setup_handlers({
 	["rust_analyzer"] = function() end,
 })
 
-require("null-ls").setup({})
-require("mason-null-ls").setup({
-	ensure_installed = { "stylua" },
-	automatic_installtion = false,
-	handlers = {},
-})
+-- require("null-ls").setup({})
+-- require("mason-null-ls").setup({
+-- 	ensure_installed = { "stylua" },
+-- 	automatic_installtion = false,
+-- 	handlers = {},
+-- })
