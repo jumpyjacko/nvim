@@ -48,9 +48,11 @@ map("n", "<leader>lA", "<cmd>AerialToggle!<cr>", { desc = "Open Code Outline" })
 map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<cr>", { desc = "Open LazyGit" })
 map("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", { desc = "Stage hunk" })
 map("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset hunk" })
+map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Preview hunk"})
 map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", { desc = "Undo stage hunk" })
 map("n", "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", { desc = "Stage buffer" })
 map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", { desc = "Reset buffer" })
+map("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", { desc = "View blame"})
 map("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", { desc = "View diff" })
 
 ---- File Tree
@@ -63,7 +65,7 @@ map("n", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
 map("v", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("v", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
 
-map("n", "<leader>c", "<cmd>bd<cr>", { desc = "Close Buffer" })
+map("n", "<leader>c", "<cmd>bp | bd #<cr>", { desc = "Close Buffer" })
 
 ---- Colemak Bindings
 map("n", "h", "h", { desc = "Move left" })

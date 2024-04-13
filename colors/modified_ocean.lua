@@ -1,4 +1,4 @@
-require("mini.base16").setup {
+require("mini.base16").setup({
   palette = {
     base00 = '#1d1f21', -- Default Background
     base01 = '#1d1f21', -- Lighter Background
@@ -21,4 +21,4 @@ require("mini.base16").setup {
   plugins = {
       default = false,
   }
-}
+})
