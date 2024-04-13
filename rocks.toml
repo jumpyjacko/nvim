@@ -22,11 +22,11 @@ nvim-lspconfig = "0.1.7"
 
 luasnip = "2.2.0"
 "lspkind.nvim" = "scm"
-cmp_luasnip = { git = "saadparwaiz1/cmp_luasnip"}
-cmp-nvim-lsp = { git = "hrsh7th/cmp-nvim-lsp"}
-cmp-buffer = { git = "hrsh7th/cmp-buffer" }
-cmp-path = { git = "hrsh7th/cmp-path" }
-nvim-cmp = { git = "hrsh7th/nvim-cmp" }
+cmp_luasnip = { git = "github:saadparwaiz1/cmp_luasnip"}
+cmp-nvim-lsp = { git = "github:hrsh7th/cmp-nvim-lsp"}
+cmp-buffer = { git = "github:hrsh7th/cmp-buffer" }
+cmp-path = { git = "github:hrsh7th/cmp-path" }
+nvim-cmp = { git = "github:hrsh7th/nvim-cmp" }
 
 rustaceanvim = "4.21.0"
 
@@ -47,3 +47,6 @@ git = "github:lewis6991/gitsigns.nvim"
 
 [plugins.nvim-highlight-colors]
 git = "github:brenoprata10/nvim-highlight-colors"
+
+[plugins."rainbow-delimiters.nvim"]
+git = "gitlab:HiPhish/rainbow-delimiters.nvim"

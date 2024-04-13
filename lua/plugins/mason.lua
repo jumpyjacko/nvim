@@ -30,3 +30,7 @@ require("mason-lspconfig").setup_handlers({
 -- 	automatic_installtion = false,
 -- 	handlers = {},
 -- })
+
+vim.api.nvim_set_hl(0, "MasonHighlight", { link = "Function" })
+vim.api.nvim_set_hl(0, "MasonHighlightBlockBold", { link = "CmpItemKindMethod" })
+vim.api.nvim_set_hl(0, "MasonHeader", { link = "CmpItemKindMethod" })
