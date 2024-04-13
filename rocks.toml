@@ -25,7 +25,7 @@ luasnip = "2.2.0"
 cmp_luasnip = { git = "saadparwaiz1/cmp_luasnip"}
 cmp-nvim-lsp = { git = "hrsh7th/cmp-nvim-lsp"}
 cmp-buffer = { git = "hrsh7th/cmp-buffer" }
-cmp-path = { git = "hrsh7th/cmp-buffer" }
+cmp-path = { git = "hrsh7th/cmp-path" }
 nvim-cmp = { git = "hrsh7th/nvim-cmp" }
 
 rustaceanvim = "4.21.0"
