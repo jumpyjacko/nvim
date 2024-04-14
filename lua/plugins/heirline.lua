@@ -138,7 +138,7 @@ local Ruler = {
 
 local ScrollBar = {
 	static = {
-		sbar = { "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" },
+		sbar = { "█", "▇", "▆", "▅", "▄", "▃", "▂", "▁" },
 		-- Another variant, because the more choice the better.
 		-- sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' }
 	},
@@ -148,7 +148,7 @@ local ScrollBar = {
 		local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
 		return string.rep(self.sbar[i], 2)
 	end,
-	hl = { fg = "blue", bg = "bright_bg" },
+	hl = { fg = "blue", bg = "bright_bg", reverse = true },
 }
 
 local LSPActive = {
