@@ -42,7 +42,6 @@ map("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", { desc = "Qui
 map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Symbol" })
 map("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document Symbols" })
 map("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", { desc = "Workspace Symbols" })
-map("n", "<leader>lA", "<cmd>AerialToggle!<cr>", { desc = "Open Code Outline" })
 
 ---- Git Actions
 map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<cr>", { desc = "Open LazyGit" })
