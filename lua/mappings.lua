@@ -29,6 +29,7 @@ map("n", "<leader>ps", "<cmd>Rocks sync<cr>", { desc = "Sync rocks.toml" })
 map("n", "<leader>pu", "<cmd>Rocks update<cr>", { desc = "Update Rocks packages" })
 
 ---- LSP Actions
+map("n", "?", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Open Floating Diagnostic" })
 map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code Action" })
 map("n", "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<cr>", { desc = "Document Diagnostics" })
 map("n", "<leader>lw", "<cmd>Telescope diagnostics<cr>", { desc = "Workspace Diagnostics" })

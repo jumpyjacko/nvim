@@ -27,7 +27,6 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<Esc>"] = cmp.mapping.abort(),
-		["<C-e>"] = cmp.mapping.abort(),
 
 		["<Up>"] = cmp.mapping.select_prev_item(select_opts),
 		["<Down>"] = cmp.mapping.select_next_item(select_opts),
