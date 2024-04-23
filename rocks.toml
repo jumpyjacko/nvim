@@ -50,3 +50,9 @@ git = "github:brenoprata10/nvim-highlight-colors"
 
 [plugins."rainbow-delimiters.nvim"]
 git = "gitlab:HiPhish/rainbow-delimiters.nvim"
+
+[plugins.auto-session]
+git = "github:rmagatti/auto-session"
+
+[plugins."diagflow.nvim"]
+git = "github:dgagn/diagflow.nvim"
