@@ -20,7 +20,8 @@ map("n", "<leader>q", "<cmd>q<cr>", { desc = "Close window" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find File" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "List Buffers" })
 map("n", "<leader>fi", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search in file" })
-map("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "List all TODOs" })
+map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
+map("n", "<leader>ft", "<cmd>Telescope todo-comments<cr>", { desc = "List all TODOs" })
 map("n", "<leader>fs", "<cmd>Telescope session-lens<cr>", { desc = "Search Sessions" })
 
 ---- Package Mangement
