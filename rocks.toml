@@ -57,3 +57,6 @@ git = "github:rmagatti/auto-session"
 
 [plugins."diagflow.nvim"]
 git = "github:dgagn/diagflow.nvim"
+
+[plugins."nvim-platformio.lua"]
+git = "github:anurag3301/nvim-platformio.lua"
