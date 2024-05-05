@@ -6,7 +6,7 @@ local lazygit = Terminal:new({
 	dir = "git_dir",
 	direction = "float",
 	float_opts = {
-		border = "shadow",
+		border = "single",
 	},
 })
 
