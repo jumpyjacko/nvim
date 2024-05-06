@@ -72,4 +72,4 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSi
 -- Removing colour of vertical splits
 vim.api.nvim_set_hl(0, "VertSplit", {})
 vim.api.nvim_set_hl(0, "WinSeparator", {})
-vim.cmd([[set fillchars=vert:\ ]])
+vim.cmd([[set fillchars=vert:\ ,eob:\ ]]) -- Also removes empty line chars
