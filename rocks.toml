@@ -42,6 +42,7 @@ nvim-autopairs = "scm"
 "neo-tree.nvim" = "3.14"
 nvim-web-devicons = "0.99"
 nvim-notify = "3.13.4"
+dashboard-nvim = "scm"
 
 [plugins."gitsigns.nvim"]
 git = "github:lewis6991/gitsigns.nvim"
