@@ -40,7 +40,7 @@ require("dashboard").setup({
             },
             {
                 icon = "󰈆 ",
-                desc = "Quit",
+                desc = "Quit ",
                 icon_hl = "Conditional",
                 group = "Conditional",
                 action = "quit",
