@@ -99,11 +99,5 @@ require("neo-tree").setup({
                 end
             end,
         },
-        {
-            event = "file_opened",
-            handler = function(file_path)
-                require("neo-tree.sources.filesystem").reset_search(state)
-            end
-        },
     },
 })
