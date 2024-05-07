@@ -71,3 +71,10 @@ require("dashboard").setup({
     },
     shortcut_type = "number",
 })
+
+vim.api.nvim_set_hl(0, "DashboardHeader", { link = "String" })
+vim.api.nvim_set_hl(0, "DashboardFooter", { link = "Comment" })
+vim.api.nvim_set_hl(0, "DashboardProjectTitle", { link = "Comment"})
+vim.api.nvim_set_hl(0, "DashboardProjectTitleIcon", { link = "Comment"})
+vim.api.nvim_set_hl(0, "DashboardMruTitle", { link = "Comment"})
+vim.api.nvim_set_hl(0, "DashboardMruIcon", { link = "Comment"})
