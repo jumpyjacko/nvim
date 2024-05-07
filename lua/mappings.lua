@@ -32,7 +32,7 @@ map("n", "<leader>ps", "<cmd>Rocks sync<cr>", { desc = "Sync rocks.toml" })
 map("n", "<leader>pu", "<cmd>Rocks update<cr>", { desc = "Update Rocks packages" })
 
 ---- LSP Actions
-map("n", "?", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Open Floating Diagnostic" })
+map("n", "?", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Hover symbol details" })
 map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code Action" })
 map("n", "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<cr>", { desc = "Document Diagnostics" })
 map("n", "<leader>lw", "<cmd>Telescope diagnostics<cr>", { desc = "Workspace Diagnostics" })
@@ -46,6 +46,11 @@ map("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", { desc = "Qui
 map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Symbol" })
 map("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document Symbols" })
 map("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", { desc = "Workspace Symbols" })
+
+map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", { desc = "Declaration of current symbol"})
+map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Show the definition of current symbol"})
+map("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<cr>", { desc = "Show the definition of current symbol"})
+map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", { desc = "Show the definition of current symbol"})
 
 ---- Git Actions
 map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<cr>", { desc = "Open LazyGit" })
