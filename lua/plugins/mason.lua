@@ -66,12 +66,12 @@ vim.g.rustaceanvim = {
     },
 }
 
--- require("null-ls").setup({})
--- require("mason-null-ls").setup({
--- 	ensure_installed = { "stylua" },
--- 	automatic_installtion = false,
--- 	handlers = {},
--- })
+require("null-ls").setup({})
+require("mason-null-ls").setup({
+	ensure_installed = { "stylua" },
+	automatic_installtion = false,
+	handlers = {},
+})
 
 vim.api.nvim_set_hl(0, "MasonHighlight", { link = "Function" })
 vim.api.nvim_set_hl(0, "MasonHighlightBlockBold", { link = "CmpItemKindMethod" })
