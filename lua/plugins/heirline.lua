@@ -200,6 +200,28 @@ local FileType = {
 	hl = { fg = utils.get_highlight("Type").fg, bold = true },
 }
 
+local FileFormatIcons = {
+    unix = "LF", -- e712
+    dos  = "CRLF", -- e70f
+    mac  = "CR", -- e711
+}
+
+local FileFormat = {
+    hl = { fg = "gray" },
+    provider = function(self)
+        local text = vim.bo.fileformat
+        local icon = FileFormatIcons[text]
+        return icon
+    end
+}
+--
+-- local FileFormat = {
+--     provider = function()
+--         local fmt = vim.bo.fileformat
+--         return fmt ~= 'unix' and fmt:upper()
+--     end
+-- }
+
 local FileName = {
 	init = function(self)
 		self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
@@ -441,6 +463,7 @@ local StatusLine = {
 	LSPActive,
 	Space,
 	FileType,
+    FileFormat,
 	Space,
 	Ruler,
 	Space,
