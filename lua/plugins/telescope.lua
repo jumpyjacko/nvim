@@ -65,3 +65,4 @@ require("telescope").setup({
 
 require("telescope").load_extension("session-lens")
 require("telescope").load_extension("notify")
+require("telescope").load_extension("luasnip")

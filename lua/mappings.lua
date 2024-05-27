@@ -24,6 +24,7 @@ map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
 map("n", "<leader>ft", "<cmd>Telescope todo-comments<cr>", { desc = "List all TODOs" })
 map("n", "<leader>fs", "<cmd>Telescope session-lens<cr>", { desc = "Search Sessions" })
 map("n", "<leader>fn", "<cmd>Telescope notify<cr>", { desc = "Search Notifications" })
+map("n", "<leader>fS", "<cmd>Telescope luasnip<cr>", { desc = "Search Snippets" })
 
 ---- Package Mangement
 map("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Open Mason" })
