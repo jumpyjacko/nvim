@@ -62,3 +62,6 @@ git = "github:dgagn/diagflow.nvim"
 
 [plugins."nvim-platformio.lua"]
 git = "github:anurag3301/nvim-platformio.lua"
+
+[plugins."presence.nvim"]
+git = "github:andweeb/presence.nvim"
