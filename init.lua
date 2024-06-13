@@ -1,6 +1,6 @@
-vim.loader.enable()
+vim.g.mapleader = " "
 
-require("rocks-setup")
-require("options")
-require("mappings")
-require("autocommands")
+require("core.lazy")
+require("core.keymaps")
+require("core.options")
+require("core.autocommands")

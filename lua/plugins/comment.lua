@@ -1,1 +1,4 @@
-require("Comment").setup()
+return {
+    'numToStr/Comment.nvim',
+    event = "BufReadPost",
+}

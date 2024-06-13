@@ -9,8 +9,6 @@ local function map(mode, lhs, rhs, opts)
 	vim.keymap.set(mode, lhs, rhs, options)
 end
 
-vim.g.mapleader = " "
-
 -- Normal mode mappings
 ---- Fast Write/Quit
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
@@ -27,6 +25,7 @@ map("n", "<leader>fS", "<cmd>Telescope luasnip<cr>", { desc = "Search Snippets" 
 
 ---- Package Mangement
 map("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Open Mason" })
+map("n", "<leader>pl", "<cmd>Lazy<cr>", { desc = "Open Lazy" })
 map("n", "<leader>pe", "<cmd>Rocks edit<cr>", { desc = "Edit rocks.toml" })
 map("n", "<leader>ps", "<cmd>Rocks sync<cr>", { desc = "Sync rocks.toml" })
 map("n", "<leader>pu", "<cmd>Rocks update<cr>", { desc = "Update Rocks packages" })
@@ -170,3 +169,4 @@ map("i", "<C-Del>", "<C-o>dw", { desc = "Delete Word (Forward)" })
 
 -- Command-line mode mappings
 -- Uncomment and add command-line mode mappings if needed
+
