@@ -23,12 +23,12 @@ require("dashboard").setup({
                 key = "f",
             },
             {
-                icon = " ",
-                desc = "Sessions ",
+                icon = " ",
+                desc = "Lazy ",
                 icon_hl = "String",
                 group = "String",
-                action = "Telescope session-lens",
-                key = "s",
+                action = "Lazy",
+                key = "l",
             },
             {
                 icon = " ",
@@ -36,7 +36,7 @@ require("dashboard").setup({
                 icon_hl = "Function",
                 group = "Function",
                 action = "Mason",
-                key = "p",
+                key = "m",
             },
             {
                 icon = "󰈆 ",
@@ -52,13 +52,13 @@ require("dashboard").setup({
             limit = 4,
             icon = "󰘬 ",
             label = "Projects",
-            action = "Telescope find_files cwd=",
+            action = function(path) vim.cmd('Telescope find_files cwd=' .. path) end,
         },
         mru = {
             limit = 8,
             icon = " ",
             label = "Recents",
-            cwd_only = false,
+            cwd_only = true,
         },
         footer = {
             "",
