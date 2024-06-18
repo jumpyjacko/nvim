@@ -2,7 +2,7 @@ require("which-key").setup({
 	icons = {
 		breadcrumb = "",
 		separator = " > ",
-		group = "",
+		group = "󰍜 ",
 	},
 	key_labels = {
 		["<space>"] = "SPC",
@@ -17,6 +17,9 @@ require("which-key").setup({
 		spacing = 3,
 		align = "left",
 	},
+    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "^:", "^ ", "^call ", "^lua " },
+    ignore_missing = true,
+    show_help = false,
 })
 
 require("which-key").register({

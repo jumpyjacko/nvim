@@ -26,9 +26,7 @@ map("n", "<leader>fS", "<cmd>Telescope luasnip<cr>", { desc = "Search Snippets" 
 ---- Package Mangement
 map("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Open Mason" })
 map("n", "<leader>pl", "<cmd>Lazy<cr>", { desc = "Open Lazy" })
-map("n", "<leader>pe", "<cmd>Rocks edit<cr>", { desc = "Edit rocks.toml" })
-map("n", "<leader>ps", "<cmd>Rocks sync<cr>", { desc = "Sync rocks.toml" })
-map("n", "<leader>pu", "<cmd>Rocks update<cr>", { desc = "Update Rocks packages" })
+map("n", "<leader>pu", "<cmd>Lazy update<cr>", { desc = "Update Lazy packages" })
 
 ---- LSP Actions
 map("n", "?", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Hover symbol details" })
@@ -112,7 +110,6 @@ map("n", "X", "dd", { desc = "Cut line" })
 map("n", "C", "yy", { desc = "Copy line" })
 map("n", "V", "P", { desc = "Paste on current line" })
 map("n", "z", "u", { desc = "Undo" })
-map("n", "gz", "U", { desc = "Undo (?)" })
 map("n", "Z", "<C-R>", { desc = "Redo" })
 
 map("n", "w", "c")
@@ -152,8 +149,9 @@ map("v", "X", "dd", { desc = "Cut line" })
 map("v", "C", "yy", { desc = "Copy line" })
 map("v", "V", "P", { desc = "Paste on current line" })
 map("v", "z", "u", { desc = "Undo" })
-map("v", "gz", "U", { desc = "Undo (?)" })
 map("v", "Z", "<C-R>", { desc = "Redo" })
+
+map("v", "gz", "U", { desc = "Capitalize Selection" })
 
 -- Operator-pending mode mappings
 ---- Colemak Bindings
