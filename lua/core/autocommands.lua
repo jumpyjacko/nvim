@@ -6,169 +6,126 @@
 --
 --- Code:
 
--- Utils
 local function preserve_position()
-    if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
-      vim.cmd("normal! g'\"")
-    end
-  end
-  
-  local function create_directory_on_save()
-    local fpath = vim.fn.expand("<afile>")
-    local dir = vim.fn.fnamemodify(fpath, ":p:h")
-  
-    if vim.fn.isdirectory(dir) ~= 1 then
-      vim.fn.mkdir(dir, "p")
-    end
-  end
-  
-  local function show_tabline()
-    -- This function shows tabline based on the following requirements:
-    --
-    -- 1. Two or more buffers in current tabpage
-    -- 2. Two or more tabpages
-  
-    local ls = vim.split(vim.api.nvim_exec("ls", true), "\n")
-    local bufs = vim.tbl_map(function(buf)
-      return tonumber(buf:match("%d+"))
-    end, ls)
-  
-    local tabs = vim.api.nvim_list_tabpages()
-  
-    return #bufs >= 2 or #tabs >= 2
-  end
-  
-  -- Utils end
-  
-  local au = vim.api.nvim_create_autocmd
-  
-  -- Enable built-in tree-sitter parsers
-  au("FileType", {
-    pattern = { "c", "lua", "vim", "help" },
-    callback = function(args)
-      if args.match == "help" then
-        args.match = "vimdoc"
-      end
-      vim.treesitter.start(args.buf, args.match)
-    end,
-  })
-  
-  -- Highlight yanked text
-  -- au("TextYankPost", {
-  --   pattern = "*",
-  --   callback = function()
-  --     vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
-  --   end,
-  -- })
-  
-  -- Dynamically show tabline (a better 'showtabline=1')
-  -- au({ "BufEnter", "BufDelete", "TabNew", "TabClosed" }, {
-  --   pattern = "*",
-  --   callback = function()
-  --     local should_show_tabline = show_tabline()
-  --     vim.opt.showtabline = should_show_tabline and 2 or 0
-  --   end,
-  -- })
-  
-  -- Autosave
-  -- au({ "InsertLeave", "FocusLost" }, {
-  --   pattern = "<buffer>",
-  --   command = "silent! write",
-  -- })
-  
-  -- Update file on external changes
-  au("FocusGained", {
-    pattern = "<buffer>",
-    command = "checktime",
-  })
-  
-  -- Sync rocks.nvim on save
-  au("BufWritePost", {
-    pattern = "rocks.toml",
-    command = "Rocks sync",
-  })
-  
-  -- Align windows when resizing Neovim
-  au("VimResized", {
-    pattern = "*",
-    command = "wincmd =",
-  })
-  
-  -- Format on save
-  -- au("BufWritePre", {
-  --   pattern = "<buffer>",
-  --   command = "silent! Format"
-  -- })
-  
-  -- Auto cd to current buffer path  NOTE: Consider enabling this for neorg files
-  -- au("BufEnter", {
-  --   pattern = "*",
-  --   command = "silent! lcd %:p:h",
-  -- })
-  
-  -- Automatically create directory when saving a file in case it does not exist
-  au("BufWritePre", {
-    pattern = "*",
-    callback = function()
-      create_directory_on_save()
-    end,
-  })
-  
-  -- Preserve last editing position
-  au("BufReadPost", {
-    pattern = "*",
-    callback = function()
-      preserve_position()
-    end,
-  })
-  
-  -- We do not like automatic comments on <cr> here, get lost
-  -- au("BufEnter", {
-  --   pattern = "*",
-  --   callback = function()
-  --     vim.opt.formatoptions:remove({ "c", "r", "o" })
-  --   end,
-  -- })
-  
-  -- Quickly exit help pages
-  au("FileType", {
-    pattern = "help",
-    callback = function()
-      vim.keymap.set("n", "q", "<cmd>q<cr>", {
-        silent = true,
-        buffer = true,
-      })
-    end,
-  })
-  
-  -- Disable numbering, folding and signcolumn in Man pages and terminal buffers
-  -- local function disable_ui_settings()
-  --   local opts = {
-  --     number = false,
-  --     relativenumber = false,
-  --     signcolumn = "no",
-  --     foldcolumn = "0",
-  --     foldlevel = 999,
-  --   }
-  --   for opt, val in pairs(opts) do
-  --     vim.opt_local[opt] = val
-  --   end
-  -- end
-  
-  -- local function start_term_mode()
-  --   disable_ui_settings()
-  --   vim.cmd("startinsert!")
-  -- end
-  
-  -- au({ "BufEnter", "BufWinEnter" }, {
-  --   pattern = "man://*",
-  --   callback = disable_ui_settings,
-  -- })
-  
-  -- au("TermOpen", {
-  --   pattern = "term://*",
-  --   callback = start_term_mode,
-  -- })
-  
-  --- autocmds.lua ends here
-  
+	if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+		vim.cmd("normal! g'\"")
+	end
+end
+
+local function create_directory_on_save()
+	local fpath = vim.fn.expand("<afile>")
+	local dir = vim.fn.fnamemodify(fpath, ":p:h")
+
+	if vim.fn.isdirectory(dir) ~= 1 then
+		vim.fn.mkdir(dir, "p")
+	end
+end
+
+local au = vim.api.nvim_create_autocmd
+
+-- Enable built-in tree-sitter parsers
+au("FileType", {
+	pattern = { "c", "lua", "vim", "help" },
+	callback = function(args)
+		if args.match == "help" then
+			args.match = "vimdoc"
+		end
+		vim.treesitter.start(args.buf, args.match)
+	end,
+})
+
+-- Autosave
+-- au({ "InsertLeave", "FocusLost" }, {
+--   pattern = "<buffer>",
+--   command = "silent! write",
+-- })
+
+-- Update file on external changes
+au("FocusGained", {
+	pattern = "<buffer>",
+	command = "checktime",
+})
+
+-- Align windows when resizing Neovim
+au("VimResized", {
+	pattern = "*",
+	command = "wincmd =",
+})
+
+-- Format on save
+-- au("BufWritePre", {
+--   pattern = "<buffer>",
+--   command = "silent! Format"
+-- })
+
+-- Auto cd to current buffer path  NOTE: Consider enabling this for neorg files
+-- au("BufEnter", {
+--   pattern = "*",
+--   command = "silent! lcd %:p:h",
+-- })
+
+-- Automatically create directory when saving a file in case it does not exist
+au("BufWritePre", {
+	pattern = "*",
+	callback = function()
+		create_directory_on_save()
+	end,
+})
+
+-- Preserve last editing position
+au("BufReadPost", {
+	pattern = "*",
+	callback = function()
+		preserve_position()
+	end,
+})
+
+-- We do not like automatic comments on <cr> here, get lost
+au("BufEnter", {
+	pattern = "*",
+	callback = function()
+		vim.opt.formatoptions:remove({ "c", "r", "o" })
+	end,
+})
+
+-- Quickly exit help pages
+au("FileType", {
+	pattern = "help",
+	callback = function()
+		vim.keymap.set("n", "q", "<cmd>q<cr>", {
+			silent = true,
+			buffer = true,
+		})
+	end,
+})
+
+-- Disable numbering, folding and signcolumn in Man pages and terminal buffers
+-- local function disable_ui_settings()
+--   local opts = {
+--     number = false,
+--     relativenumber = false,
+--     signcolumn = "no",
+--     foldcolumn = "0",
+--     foldlevel = 999,
+--   }
+--   for opt, val in pairs(opts) do
+--     vim.opt_local[opt] = val
+--   end
+-- end
+
+-- local function start_term_mode()
+--   disable_ui_settings()
+--   vim.cmd("startinsert!")
+-- end
+
+-- au({ "BufEnter", "BufWinEnter" }, {
+--   pattern = "man://*",
+--   callback = disable_ui_settings,
+-- })
+
+-- au("TermOpen", {
+--   pattern = "term://*",
+--   callback = start_term_mode,
+-- })
+
+--- autocmds.lua ends here
