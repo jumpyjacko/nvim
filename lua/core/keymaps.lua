@@ -72,6 +72,25 @@ map("v", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
 
 map("n", "<leader>c", "<cmd>bp | bd #<cr>", { desc = "Close Buffer" })
 
+---- Crates.nvim
+local crates = require("crates")
+map("n", "<leader>rt", crates.toggle, { desc = "Toggle crates.nvim" })
+map("n", "<leader>rr", crates.reload, { desc = "Reload crates.nvim" })
+
+map("n", "<leader>rv", crates.show_versions_popup, { desc = "Show versions popup" })
+map("n", "<leader>rf", crates.show_features_popup, { desc = "Show features popup" })
+map("n", "<leader>rd", crates.show_dependencies_popup, { desc = "Show dependencies popup" })
+
+map("n", "<leader>ru", crates.update_crate, { desc = "Update crate" })
+map("v", "<leader>ru", crates.update_crates, { desc = "Update crates" })
+map("n", "<leader>ra", crates.update_all_crates, { desc = "Update all crates" })
+map("n", "<leader>ru", crates.upgrade_crate, { desc = "Upgrade crate" })
+map("v", "<leader>rU", crates.upgrade_crates, { desc = "Upgrade crates" })
+map("n", "<leader>rA", crates.upgrade_all_crates, { desc = "Upgrade all crates" })
+
+map("n", "<leader>rx", crates.expand_plain_crate_to_inline_table, { desc = "Expand crate to inline table" })
+map("n", "<leader>rX", crates.extract_crate_into_table, { desc = "Extract crate into table" })
+
 ---- Colemak Bindings
 map("n", "h", "h", { desc = "Move left" })
 map("n", "n", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down", expr = true, silent = true })

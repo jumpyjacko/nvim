@@ -29,5 +29,6 @@ require("which-key").register({
     l = { name = "LSP" },
     t = { name = "TODO" },
     g = { name = "Git" },
+    r = { name = "Rust Crates" },
   },
 })
