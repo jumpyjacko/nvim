@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
 require("core.lazy")
-require("core.keymaps")
+require("core.mappings")
 require("core.options")
 require("core.autocommands")
