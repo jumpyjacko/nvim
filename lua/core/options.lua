@@ -37,7 +37,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.opt.showmode = false
 vim.opt.wrap = false
-vim.o.timeoutlen = 200
+vim.o.timeoutlen = 150
 vim.o.clipboard = "unnamedplus"
 
 vim.opt.tabstop = 4
