@@ -16,7 +16,7 @@ cmp.setup({
     },
     window = {
         completion = {
-            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None,CursorLine:PmenuSel",
             col_offset = -3,
             side_padding = 0,
         },
@@ -33,7 +33,7 @@ cmp.setup({
         end,
     },
     mapping = cmp.mapping.preset.insert({
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<Esc>"] = cmp.mapping.abort(),
         ["<Up>"] = cmp.mapping.select_prev_item(select_opts),
         ["<Down>"] = cmp.mapping.select_next_item(select_opts),
@@ -69,7 +69,7 @@ cmp.setup({
 })
 
 -- Customization for Pmenu
-vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#3b404b", fg = "NONE" })
+vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#3b404b", fg = "#d8dee9" })
 vim.api.nvim_set_hl(0, "Pmenu", { fg = "#c5c8c6", bg = "#1d1f21" })
 
 vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#65737e", bg = "NONE", strikethrough = true })
