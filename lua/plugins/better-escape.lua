@@ -1,6 +1,6 @@
 return {
 	"max397574/better-escape.nvim",
-	-- dir = "~/.config/nvim/dev/better-escape.nvim",
+	dir = "~/.config/nvim/dev/better-escape.nvim",
 	event = "InsertEnter",
 	opts = {
 		timeout = vim.o.timeoutlen,
