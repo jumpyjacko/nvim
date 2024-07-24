@@ -13,7 +13,7 @@ require("toggleterm").setup({
 local Terminal = require("toggleterm.terminal").Terminal
 
 local lazygit = Terminal:new({
-    -- display_name = "Lazygit",
+    display_name = "Lazygit",
 	cmd = "lazygit",
 	dir = "git_dir",
 	direction = "float",
