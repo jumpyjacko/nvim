@@ -6,19 +6,19 @@ require("toggleterm").setup({
     terminal_mappings = true,
     direction = "float",
     float_opts = {
-        boarder = "single",
+        border = "single",
     },
 })
 
 local Terminal = require("toggleterm.terminal").Terminal
 
 local lazygit = Terminal:new({
-    display_name = "Lazygit",
+    -- display_name = "Lazygit",
 	cmd = "lazygit",
 	dir = "git_dir",
 	direction = "float",
 	float_opts = {
-		border = "single",
+		border = "none",
 	},
 })
 
