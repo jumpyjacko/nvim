@@ -72,15 +72,15 @@ require("neo-tree").setup({
         },
     },
     filesystem = {
+        hijack_netrw_behavior = "open_current",
         filtered_items = {
             hide_dotfiles = false,
             hide_gitignored = false,
         },
         follow_current_file = {
             enabled = true,
-            leave_dirs_open = true, -- NOTE: Might want to disable this if in bigger projects
+            leave_dirs_open = true,
         },
-        hijack_netrw_behaviour = true,
     },
     event_handlers = {
         {
