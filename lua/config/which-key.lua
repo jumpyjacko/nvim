@@ -2,7 +2,8 @@ require("which-key").setup({
     icons = {
         breadcrumb = "",
         separator = " > ",
-        group = "󰍜 ",
+        -- group = "󰍜 ",
+        group = "",
     },
     layout = {
         -- height = { min = 4, max = 20 },
