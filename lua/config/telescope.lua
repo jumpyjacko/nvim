@@ -36,15 +36,12 @@ require("telescope").setup({
 		path_display = { "truncate" },
 		winblend = 0,
 		border = {},
-		-- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-		borderchars = { "", "", "", "", "", "", "", "" },
+		borderchars = { "", "", "", "", "", "", "", "" }, -- No Border
 		color_devicons = true,
 		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-		-- Developer configurations: Not meant for general override
-		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 		mappings = {
 			n = {
 				["q"] = require("telescope.actions").close,

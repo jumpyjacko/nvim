@@ -1,15 +1,15 @@
 require("which-key").setup({
+    preset = "classic",
     icons = {
         breadcrumb = "",
         separator = " > ",
         -- group = "󰍜 ",
         group = "",
     },
-    layout = {
-        -- height = { min = 4, max = 20 },
-        -- width = { min = 20, max = 50 },
-        -- spacing = 3,
-        align = "left",
+    win = {
+        no_overlap = true,
+        padding = { 1, 4 },
+        title = false,
     },
     show_help = false,
 })

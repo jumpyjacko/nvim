@@ -17,8 +17,6 @@ Map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "List Buffers" })
 Map("n", "<leader>fi", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search in file" })
 Map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
 Map("n", "<leader>ft", "<cmd>Telescope todo-comments<cr>", { desc = "List all TODOs" })
-Map("n", "<leader>fn", "<cmd>Telescope notify<cr>", { desc = "Search Notifications" })
-Map("n", "<leader>fS", "<cmd>Telescope luasnip<cr>", { desc = "Search Snippets" })
 
 ---- Package Mangement
 Map("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Open Mason" })
