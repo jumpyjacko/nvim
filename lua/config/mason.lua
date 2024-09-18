@@ -1,6 +1,6 @@
 require("mason").setup({})
 require("mason-lspconfig").setup({
-    ensure_installed = { "clangd", "lua_ls", "marksman", "pyright", "tsserver", "zls" },
+    ensure_installed = { "clangd", "lua_ls", "marksman", "pyright", "ts_ls", "zls" },
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -50,7 +50,11 @@ vim.api.nvim_set_hl(0, "MasonHighlightBlockBold", { link = "CmpItemKindMethod" }
 vim.api.nvim_set_hl(0, "MasonHeader", { link = "CmpItemKindMethod" })
 
 require("mason-null-ls").setup({
-	ensure_installed = { "stylua" },
-	automatic_installtion = false,
-	handlers = {},
+    ensure_installed = { "stylua", "black" },
+    automatic_installtion = false,
+    handlers = {},
+})
+
+require("null-ls").setup({
+    autostart = true,
 })
