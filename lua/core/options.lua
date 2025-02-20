@@ -30,7 +30,7 @@ for _, provider in ipairs(providers) do
 end
 
 -- Colourscheme
-vim.cmd([[colorscheme modified_ocean]])
+-- vim.cmd([[colorscheme modified_ocean]])
 
 -- General Vi/m Options
 vim.wo.number = true

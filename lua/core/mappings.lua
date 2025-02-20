@@ -67,6 +67,9 @@ Map("v", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
 
 Map("n", "<leader>c", "<cmd>bp | bd #<cr>", { desc = "Close Buffer" })
 
+---- Markview
+Map("n", "<M-cr>", "<cmd>Markview open<cr>", { desc = "Open Link" })
+
 ---- Colemak Bindings
 Map("n", "h", "h", { desc = "Move left" })
 Map("n", "n", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down", expr = true, silent = true })
