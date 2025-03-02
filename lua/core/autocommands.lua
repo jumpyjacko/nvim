@@ -23,6 +23,21 @@ end
 
 local au = vim.api.nvim_create_autocmd
 
+-- Markdown -> no cmp, spellcheck
+au("FileType", {
+  pattern = "markdown",  -- this triggers for Markdown files (e.g., *.md)
+  callback = function()
+    -- Turn on spell checking and set the language.
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = "en_au"  -- change to "en_gb" for British English
+
+    -- Disable built-in completion functions.
+    -- This unsets any omni or custom completion that may be set for the buffer.
+    vim.opt_local.omnifunc = nil
+    vim.opt_local.completefunc = nil
+  end,
+})
+
 -- Enable built-in tree-sitter parsers
 au("FileType", {
 	pattern = { "c", "lua", "vim", "help" },
