@@ -44,6 +44,9 @@ Map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Show the defin
 Map("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<cr>", { desc = "Show the definition of current symbol"})
 Map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", { desc = "Show the definition of current symbol"})
 
+---- Spellcheck
+Map("n", "<leader>ss", "z=", { desc = "Spell Suggestions"})
+
 ---- Git Actions
 Map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<cr>", { desc = "Open LazyGit" })
 Map("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", { desc = "Stage hunk" })

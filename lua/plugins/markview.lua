@@ -62,6 +62,14 @@ return {
 						hl = "MarkviewPalette7",
 					},
 				},
+                list_items = {
+                    indent_size = 1,
+                    shift_width = 1,
+                    marker_minus = {
+                        text = "-",
+                        hl = "MarkviewPalette1fg",
+                    }
+                },
 				tables = presets.tables.none,
 			},
 		})
