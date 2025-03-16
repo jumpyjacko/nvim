@@ -10,6 +10,7 @@ return {
             "nvimtools/none-ls.nvim",
             "neovim/nvim-lspconfig",
             "williamboman/mason-lspconfig.nvim",
+            "jay-babu/mason-nvim-dap.nvim",
             "jay-babu/mason-null-ls.nvim",
         },
     },

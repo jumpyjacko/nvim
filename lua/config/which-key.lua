@@ -23,5 +23,6 @@ require("which-key").add(
         { "<leader>r", group = "Rust Crates" },
         { "<leader>t", group = "TODO" },
         { "<leader>s", group = "Spelling" },
+        { "<leader>d", group = "Debugger" },
     }
 )
