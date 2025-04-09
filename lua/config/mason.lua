@@ -33,6 +33,14 @@ require("mason-lspconfig").setup_handlers({
 			},
 		})
 	end,
+	["clangd"] = function()
+		require("lspconfig").clangd.setup({
+			cmd = {
+				"clangd",
+				"--fallback-style=webkit",
+			},
+		})
+	end,
 	["rust_analyzer"] = function() end,
 })
 

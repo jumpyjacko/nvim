@@ -98,7 +98,7 @@ local ViMode = {
 	end,
 	hl = function(self)
 		local mode = self.mode:sub(1, 1)
-		return { fg = self.mode_colours[mode], bold = true }
+		return { fg = self.mode_colours[mode], bg = "bright_bg", bold = true }
 	end,
 	update = {
 		"ModeChanged",
@@ -117,13 +117,13 @@ local Git = {
 		self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
 	end,
 
-	hl = { fg = "green" },
+	hl = { fg = "green", bg = "bright_bg" },
 
 	{ -- git branch name
 		provider = function(self)
 			return " " .. self.status_dict.head
 		end,
-		hl = { bold = true },
+		hl = { bg = "bright_bg", bold = true },
 	},
 }
 
@@ -166,7 +166,7 @@ local LSPActive = {
 		end
 		return table.concat(names, " ")
 	end,
-	hl = { fg = "green", bold = true },
+	hl = { fg = "green", bg = "bright_bg", bold = true },
 }
 
 local FileNameBlock = {
@@ -182,14 +182,14 @@ local FileFlags = {
 			return vim.bo.modified
 		end,
 		provider = "[+]",
-		hl = { fg = "green" },
+		hl = { fg = "green", bg = "bright_bg" },
 	},
 	{
 		condition = function()
 			return not vim.bo.modifiable or vim.bo.readonly
 		end,
 		provider = "",
-		hl = { fg = "orange" },
+		hl = { fg = "orange", bg = "bright_bg" },
 	},
 }
 
@@ -207,7 +207,7 @@ local FileFormatIcons = {
 }
 
 local FileFormat = {
-    hl = { fg = "gray" },
+    hl = { fg = "gray", bg = "bright_bg" },
     provider = function(self)
         local text = vim.bo.fileformat
         local icon = FileFormatIcons[text]
@@ -229,7 +229,7 @@ local FileName = {
 			self.lfilename = "[No Name]"
 		end
 	end,
-	hl = { fg = "gray" },
+	hl = { fg = "gray", bg = "bright_bg" },
 
 	flexible = 2,
 
@@ -425,25 +425,25 @@ local Diagnostics = {
 			-- 0 is just another output, we can decide to print it or not!
 			return self.errors > 0 and (self.error_icon .. self.errors .. " ")
 		end,
-		hl = { fg = "diag_error" },
+		hl = { fg = "diag_error", bg = "bright_bg" },
 	},
 	{
 		provider = function(self)
 			return self.warnings > 0 and (self.warn_icon .. self.warnings .. " ")
 		end,
-		hl = { fg = "diag_warn" },
+		hl = { fg = "diag_warn", bg = "bright_bg" },
 	},
 	{
 		provider = function(self)
 			return self.info > 0 and (self.info_icon .. self.info .. " ")
 		end,
-		hl = { fg = "diag_info" },
+		hl = { fg = "diag_info", bg = "bright_bg" },
 	},
 	{
 		provider = function(self)
 			return self.hints > 0 and (self.hint_icon .. self.hints)
 		end,
-		hl = { fg = "diag_hint" },
+		hl = { fg = "diag_hint", bg = "bright_bg" },
 	},
 }
 
