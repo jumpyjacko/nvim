@@ -80,7 +80,3 @@ require("mason-null-ls").setup({
 require("null-ls").setup({
 	autostart = true,
 })
-
-require("mason-nvim-dap").setup({
-	handlers = {},
-})
