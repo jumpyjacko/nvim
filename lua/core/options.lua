@@ -74,3 +74,8 @@ vim.api.nvim_set_hl(0, "VertSplit", {})
 vim.api.nvim_set_hl(0, "WinSeparator", {})
 vim.cmd([[set fillchars=vert:\ ,eob:\ ]]) -- Also removes empty line chars
 
+-- Folds
+vim.opt.foldmethod = "syntax"
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 99
+vim.opt.foldnestmax = 4

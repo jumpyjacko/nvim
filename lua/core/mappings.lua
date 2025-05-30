@@ -122,6 +122,8 @@ Map("n", "<C-W>n", "<C-W>j")
 Map("n", "<C-W>e", "<C-W>k")
 Map("n", "<C-W>i", "<C-W>l")
 
+Map("n", "j", "z")
+
 -- Visual mode mappings
 ---- Colemak Bindings
 Map("v", "h", "h", { desc = "Move left" })
@@ -153,6 +155,8 @@ Map("v", "z", "u", { desc = "Undo" })
 Map("v", "Z", "<C-R>", { desc = "Redo" })
 
 Map("v", "gz", "U", { desc = "Capitalize Selection" })
+
+Map("v", "j", "z")
 
 -- Operator-pending mode mappings
 ---- Colemak Bindings
