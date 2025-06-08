@@ -1,6 +1,6 @@
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "clangd", "lua_ls", "marksman", "pyright", "ts_ls", "zls" },
+	ensure_installed = { "clangd", "lua_ls", "marksman", "basedpyright", "ts_ls"  },
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
