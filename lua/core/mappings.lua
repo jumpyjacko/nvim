@@ -58,9 +58,11 @@ Map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", { desc = "Reset buffer"
 Map("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", { desc = "View blame"})
 Map("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", { desc = "View diff" })
 
----- File Tree
-Map("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Open File Tree" })
-Map("n", "<leader>o", "<cmd>Neotree focus<cr>", { desc = "Focus File Tree" })
+---- File System
+-- Map("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Open File Tree" })
+-- Map("n", "<leader>o", "<cmd>Neotree focus<cr>", { desc = "Focus File Tree" })
+Map("n", "<leader>e", "<cmd>Oil<cr>", { desc = "Open Filesystem" })
+Map("n", "-", "<cmd>Oil<cr>")
 
 ---- Buffer Stuff
 Map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
