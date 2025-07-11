@@ -12,14 +12,14 @@ local function preserve_position()
 	end
 end
 
-local function create_directory_on_save()
-	local fpath = vim.fn.expand("<afile>")
-	local dir = vim.fn.fnamemodify(fpath, ":p:h")
-
-	if vim.fn.isdirectory(dir) ~= 1 then
-		vim.fn.mkdir(dir, "p")
-	end
-end
+-- local function create_directory_on_save()
+-- 	local fpath = vim.fn.expand("<afile>")
+-- 	local dir = vim.fn.fnamemodify(fpath, ":p:h")
+--
+-- 	if vim.fn.isdirectory(dir) ~= 1 then
+-- 		vim.fn.mkdir(dir, "p")
+-- 	end
+-- end
 
 local au = vim.api.nvim_create_autocmd
 
@@ -95,12 +95,12 @@ au("VimResized", {
 -- })
 
 -- Automatically create directory when saving a file in case it does not exist
-au("BufWritePre", {
-	pattern = "*",
-	callback = function()
-		create_directory_on_save()
-	end,
-})
+-- au("BufWritePre", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		create_directory_on_save()
+-- 	end,
+-- })
 
 -- Preserve last editing position
 au("BufReadPost", {
