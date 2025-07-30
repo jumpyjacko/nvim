@@ -1,10 +1,7 @@
-# Personal Neovim Setup
-A *relatively* minimal Neovim setup that uses the lazy.nvim plugin manager.
-Not recommended to use straight out the box because I use the Colemak keyboard layout and have bound many things for comfort.
+# Minimal Neovim Setup
+A *relatively* minimal, single-file Neovim (0.12+) setup that uses the native `vim.pack` package manager.
 
 # Gallery
-![neovim1](./images/neovim_1.png)
-![neovim2](./images/neovim_2.png)
-![dashboard](./images/dashboard.png)
-![telescope](./images/telescope.png)
-![lazygit](./images/lazygit.png)
+![main-1](./images/main-1.jpg)
+![main-2](./images/main-2.jpg)
+![pick](./images/pick.jpg)

@@ -1,7 +1,127 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = ","
 
-require("core.lazy")
-require("core.mappings")
-require("core.options")
-require("core.autocommands")
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.wrap = false
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.swapfile = false
+vim.o.timeoutlen = 150
+vim.o.signcolumn = "yes"
+vim.o.clipboard = "unnamedplus"
+vim.o.termguicolors = true
+
+vim.pack.add({
+    { src = "https://github.com/stevearc/oil.nvim" },
+    { src = "https://github.com/echasnovski/mini.pick" },
+    { src = "https://github.com/lewis6991/gitsigns.nvim" },
+    { src = "https://github.com/windwp/nvim-autopairs" },
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    { src = "https://github.com/neovim/nvim-lspconfig" },
+    { src = "https://github.com/mason-org/mason.nvim" },
+    { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+    { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range('v1.*') },
+
+    { src = "https://github.com/dgox16/oldworld.nvim" },
+})
+
+vim.cmd("colorscheme oldworld")
+
+-- Remove Background
+vim.api.nvim_set_hl(0, "StatusLine", { fg = "white", bg = "NONE" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "LineNr", { link = "Comment" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Comment" })
+
+vim.o.completeopt = "menu,menuone,popup,noselect"
+vim.o.completefuzzycollect = "keyword,files"
+
+require "mini.pick".setup()
+require "nvim-autopairs".setup()
+require "mason".setup()
+require "mason-lspconfig".setup()
+require "oil".setup({
+    columns = { "icon" },
+    view_options = { show_hidden = true },
+})
+require "blink.cmp".setup({
+    completion = {
+        documentation = { auto_show = true },
+        menu = {
+            draw = {
+                treesitter = { 'lsp' },
+                padding = { 0, 1 },
+                components = {
+                    kind_icon = {
+                        text = function(ctx)
+                            return ' ' .. ctx.kind_icon .. ctx.icon_gap .. ' '
+                        end,
+                    }
+                }
+            }
+        }
+    },
+    signature = { enabled = true },
+    keymap = {
+        preset = 'default',
+        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'fallback' },
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<Esc>'] = { 'cancel', 'fallback' },
+    }
+})
+
+vim.keymap.set('n', '<leader>w', ':write<CR>')
+vim.keymap.set('n', '<leader>q', ':quit<CR>')
+
+vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
+vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
+
+vim.keymap.set("i", "NE", "<Esc>", { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
+vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
+vim.keymap.set('n', '?', vim.lsp.buf.hover)
+
+vim.keymap.set('n', '<leader>ff', ":Pick files<CR>")
+vim.keymap.set('n', '<leader>fh', ":Pick help<CR>")
+vim.keymap.set('n', '<leader>fg', ":Pick grep_live<CR>")
+vim.keymap.set('n', '<leader>fb', ":Pick buffers<CR>")
+vim.keymap.set('n', '<leader>e', ':Oil<CR>')
+
+vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>')
+vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>')
+
+vim.api.nvim_set_hl(0, "MiniPickBorder", { bg = "NONE", fg = "NONE" })
+vim.api.nvim_set_hl(0, "MiniPickBorderBusy", { bg = "NONE", fg = "NONE" })
+vim.api.nvim_set_hl(0, "MiniPickNormal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "MiniPickPreviewLine", { bg = "NONE" })
+
+-- Autocommands
+local function preserve_position()
+    if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+        vim.cmd("normal! g'\"")
+    end
+end
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+    pattern = "*",
+    callback = function()
+        preserve_position()
+    end,
+})
+
+vim.api.nvim_create_autocmd("VimResized", {
+    pattern = "*",
+    command = "wincmd =",
+})
+
+vim.api.nvim_create_autocmd("FocusGained", {
+    pattern = "<buffer>",
+    command = "checktime",
+})
