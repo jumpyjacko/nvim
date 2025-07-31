@@ -89,6 +89,7 @@ vim.keymap.set("i", "NE", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float)
 vim.keymap.set('n', '?', vim.lsp.buf.hover)
 
 vim.keymap.set('n', '<leader>ff', ":Pick files<CR>")
