@@ -25,7 +25,6 @@ vim.pack.add({
         src = "https://github.com/Saghen/blink.cmp",
         version = vim.version.range('v1.*'),
     },
-
     { src = "https://github.com/dgox16/oldworld.nvim" },
 })
 
@@ -42,6 +41,7 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Comment" })
 
 vim.o.completeopt = "menu,menuone,popup,noselect"
 vim.o.completefuzzycollect = "keyword,files"
+vim.diagnostic.update_in_insert = true
 
 require "mini.pick".setup()
 require "nvim-autopairs".setup()
@@ -78,6 +78,7 @@ require "blink.cmp".setup({
     }
 })
 
+-- Mappings
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
 
@@ -142,8 +143,8 @@ vim.api.nvim_set_hl(0, "BlinkCmpKindProperty", { fg = "#ffffff", bg = "#EA83A5" 
 vim.api.nvim_set_hl(0, "BlinkCmpKindEvent", { fg = "#ffffff", bg = "#EA83A5" })
 
 vim.api.nvim_set_hl(0, "BlinkCmpKindText", { fg = "#ffffff", bg = "#90B99F" })
-vim.api.nvim_set_hl(0, "BlinkCmpKindEnum", { fg = "#ffffff", bg = "#90b99F" })
-vim.api.nvim_set_hl(0, "BlinkCmpKindKeyword", { fg = "#ffffff", bg = "#90b99F" })
+vim.api.nvim_set_hl(0, "BlinkCmpKindEnum", { fg = "#ffffff", bg = "#90B99F" })
+vim.api.nvim_set_hl(0, "BlinkCmpKindKeyword", { fg = "#ffffff", bg = "#90B99F" })
 
 vim.api.nvim_set_hl(0, "BlinkCmpKindConstant", { fg = "#ffffff", bg = "#E6B99D" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindConstructor", { fg = "#ffffff", bg = "#E6B99D" })
@@ -168,4 +169,70 @@ vim.api.nvim_set_hl(0, "BlinkCmpKindEnumMember", { fg = "#ffffff", bg = "#92A2D5
 
 vim.api.nvim_set_hl(0, "BlinkCmpKindInterface", { fg = "#ffffff", bg = "#85B5BA" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindColor", { fg = "#ffffff", bg = "#85B5BA" })
-vim.api.nvim_set_hl(0, "BlinkCmpKindTypeParameter", { fg = "#ffffff", bg = "#85bab2" })
+vim.api.nvim_set_hl(0, "BlinkCmpKindTypeParameter", { fg = "#ffffff", bg = "#85B5BA" })
+
+-- Status Line
+vim.api.nvim_set_hl(0, "StlAccent", { fg = "#90B99F", bold = true })
+vim.api.nvim_set_hl(0, "StlNormal", { fg = "#92A2D5", bold = true })
+vim.api.nvim_set_hl(0, "StlInsert", { fg = "#90B99F", bold = true })
+vim.api.nvim_set_hl(0, "StlVisual", { fg = "#ACA1CF", bold = true })
+vim.api.nvim_set_hl(0, "StlReplace", { fg = "#EA83A5", bold = true })
+vim.api.nvim_set_hl(0, "StlCommand", { fg = "#E6B99D", bold = true })
+vim.api.nvim_set_hl(0, "StlOther", { bold = true })
+
+local function git_branch()
+    local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
+    if not handle then return "" end
+    local branch = handle:read("*l")
+    handle:close()
+    if branch and branch ~= "" then
+        return "%#StlAccent#" .. " " .. branch .. "%*"
+    else
+        return ""
+    end
+end
+
+local function lsp_servers()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+    if #clients == 0 then return "" end
+    local names = {}
+    for _, client in pairs(clients) do
+        table.insert(names, client.name)
+    end
+    return "%#StlAccent#" .. table.concat(names, ", ") .. "%*   "
+end
+
+local function mode_indicator()
+    local mode_map = {
+        n = { "NORMAL", "StlNormal" },
+        i = { "INSERT", "StlInsert" },
+        v = { "VISUAL", "StlVisual" },
+        V = { "V-LINE", "StlVisual" },
+        ["\22"] = { "V-BLOCK", "StlVisual" },
+        c = { "COMMAND", "StlCommand" },
+        R = { "REPLACE", "StlReplace" },
+    }
+
+    local mode = vim.api.nvim_get_mode().mode
+    local label, group = unpack(mode_map[mode] or { "OTHER", "StatusLineOther" })
+
+    return "%#" .. group .. "#" .. "▎ " .. label .. " %* "
+end
+
+local function statusline()
+    return table.concat {
+        mode_indicator(),
+        "%f %m %r",
+        git_branch(),
+
+        "%=",
+        lsp_servers(),
+        "Ln %l, Col %c [%p%%]"
+    }
+end
+
+_G.statusline = statusline
+
+vim.o.statusline = "%!v:lua.statusline()"
+vim.o.showmode = false
