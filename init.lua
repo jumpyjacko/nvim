@@ -168,13 +168,12 @@ vim.api.nvim_set_hl(0, "BlinkCmpKindColor", { fg = "#ffffff", bg = "#85B5BA" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindTypeParameter", { fg = "#ffffff", bg = "#85B5BA" })
 
 -- Status Line
-vim.api.nvim_set_hl(0, "StlAccent", { fg = "#90B99F", bold = true })
-vim.api.nvim_set_hl(0, "StlNormal", { fg = "#92A2D5", bold = true })
-vim.api.nvim_set_hl(0, "StlInsert", { fg = "#90B99F", bold = true })
-vim.api.nvim_set_hl(0, "StlVisual", { fg = "#ACA1CF", bold = true })
-vim.api.nvim_set_hl(0, "StlReplace", { fg = "#EA83A5", bold = true })
-vim.api.nvim_set_hl(0, "StlCommand", { fg = "#E6B99D", bold = true })
-vim.api.nvim_set_hl(0, "StlOther", { bold = true })
+vim.api.nvim_set_hl(0, "StlAccent", { fg = "#90B99F" })
+vim.api.nvim_set_hl(0, "StlNormal", { fg = "#92A2D5" })
+vim.api.nvim_set_hl(0, "StlInsert", { fg = "#90B99F" })
+vim.api.nvim_set_hl(0, "StlVisual", { fg = "#ACA1CF" })
+vim.api.nvim_set_hl(0, "StlReplace", { fg = "#EA83A5" })
+vim.api.nvim_set_hl(0, "StlCommand", { fg = "#E6B99D" })
 
 local function git_branch()
     local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
@@ -211,7 +210,7 @@ local function mode_indicator()
     }
 
     local mode = vim.api.nvim_get_mode().mode
-    local label, group = unpack(mode_map[mode] or { "OTHER", "StatusLineOther" })
+    local label, group = unpack(mode_map[mode] or { "OTHER", ""})
 
     return "%#" .. group .. "#" .. "▎ " .. label .. " %* "
 end
