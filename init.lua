@@ -39,10 +39,7 @@ vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "LineNr", { link = "Comment" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Comment" })
 
-vim.o.completeopt = "menu,menuone,popup,noselect"
-vim.o.completefuzzycollect = "keyword,files"
-vim.diagnostic.update_in_insert = true
-
+-- Setup Plugins
 require "mini.pick".setup()
 require "nvim-autopairs".setup()
 require "mason".setup()
@@ -132,7 +129,6 @@ vim.api.nvim_create_autocmd("FocusGained", {
 })
 
 -- blink.cmp completion highlights
--- Menu item annotation (like function source or snippet name)
 vim.api.nvim_set_hl(0, "BlinkCmpMenu", { fg = "#ACA1CF", bg = "NONE", italic = true })
 
 -- Kind groups
