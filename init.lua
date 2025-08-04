@@ -11,6 +11,8 @@ vim.o.timeoutlen = 150
 vim.o.signcolumn = "yes"
 vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
