@@ -45,10 +45,7 @@ require "mini.pick".setup()
 require "nvim-autopairs".setup()
 require "mason".setup()
 require "mason-lspconfig".setup()
-require "oil".setup({
-    columns = { "icon" },
-    view_options = { show_hidden = true },
-})
+require "oil".setup()
 require "blink.cmp".setup({
     completion = {
         documentation = { auto_show = true },
@@ -80,15 +77,12 @@ require "blink.cmp".setup({
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
 
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
-
 vim.keymap.set("i", "NE", "<Esc>", { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
-vim.keymap.set('n', '?', vim.lsp.buf.hover)
+vim.keymap.set('n', '?', vim.diagnostic.open_float)
 
 vim.keymap.set('n', '<leader>ff', ":Pick files<CR>")
 vim.keymap.set('n', '<leader>fh', ":Pick help<CR>")
@@ -99,12 +93,7 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>')
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>')
 
-vim.api.nvim_set_hl(0, "MiniPickBorder", { bg = "NONE", fg = "NONE" })
-vim.api.nvim_set_hl(0, "MiniPickBorderBusy", { bg = "NONE", fg = "NONE" })
-vim.api.nvim_set_hl(0, "MiniPickNormal", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "MiniPickPreviewLine", { bg = "NONE" })
-
--- Autocommands
+-- Autocommands (from NTBBloodbath's Neovim)
 local function preserve_position()
     if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
         vim.cmd("normal! g'\"")
