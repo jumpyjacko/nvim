@@ -17,7 +17,6 @@ vim.pack.add({
     { src = "https://github.com/echasnovski/mini.pick" },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
@@ -87,7 +86,6 @@ vim.keymap.set("i", "NE", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
-vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float)
 vim.keymap.set('n', '?', vim.lsp.buf.hover)
 
 vim.keymap.set('n', '<leader>ff', ":Pick files<CR>")
@@ -132,37 +130,29 @@ vim.api.nvim_create_autocmd("FocusGained", {
 vim.api.nvim_set_hl(0, "BlinkCmpMenu", { fg = "#ACA1CF", bg = "NONE", italic = true })
 
 -- Kind groups
-vim.api.nvim_set_hl(0, "BlinkCmpAbbrDeprecated", { fg = "#8b8693", bg = "NONE", strikethrough = true })
-
+vim.api.nvim_set_hl(0, "BlinkCmpAbbrDeprecated", { fg = "#65737E", bg = "NONE", strikethrough = true })
 vim.api.nvim_set_hl(0, "BlinkCmpKindField", { fg = "#ffffff", bg = "#EA83A5" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindProperty", { fg = "#ffffff", bg = "#EA83A5" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindEvent", { fg = "#ffffff", bg = "#EA83A5" })
-
 vim.api.nvim_set_hl(0, "BlinkCmpKindText", { fg = "#ffffff", bg = "#90B99F" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindEnum", { fg = "#ffffff", bg = "#90B99F" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindKeyword", { fg = "#ffffff", bg = "#90B99F" })
-
 vim.api.nvim_set_hl(0, "BlinkCmpKindConstant", { fg = "#ffffff", bg = "#E6B99D" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindConstructor", { fg = "#ffffff", bg = "#E6B99D" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindReference", { fg = "#ffffff", bg = "#E6B99D" })
-
 vim.api.nvim_set_hl(0, "BlinkCmpKindFunction", { fg = "#ffffff", bg = "#ACA1CF" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindStruct", { fg = "#ffffff", bg = "#ACA1CF" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindClass", { fg = "#ffffff", bg = "#ACA1CF" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindModule", { fg = "#ffffff", bg = "#ACA1CF" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindOperator", { fg = "#ffffff", bg = "#ACA1CF" })
-
-vim.api.nvim_set_hl(0, "BlinkCmpKindVariable", { fg = "#ffffff", bg = "#3c3c3f" })
-vim.api.nvim_set_hl(0, "BlinkCmpKindFile", { fg = "#ffffff", bg = "#3c3c3f" })
-
+vim.api.nvim_set_hl(0, "BlinkCmpKindVariable", { fg = "#ffffff", bg = "#65737E" })
+vim.api.nvim_set_hl(0, "BlinkCmpKindFile", { fg = "#ffffff", bg = "#65737E" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindUnit", { fg = "#ffffff", bg = "#F5A191" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindSnippet", { fg = "#ffffff", bg = "#F5A191" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindFolder", { fg = "#ffffff", bg = "#F5A191" })
-
 vim.api.nvim_set_hl(0, "BlinkCmpKindMethod", { fg = "#ffffff", bg = "#92A2D5" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindValue", { fg = "#ffffff", bg = "#92A2D5" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindEnumMember", { fg = "#ffffff", bg = "#92A2D5" })
-
 vim.api.nvim_set_hl(0, "BlinkCmpKindInterface", { fg = "#ffffff", bg = "#85B5BA" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindColor", { fg = "#ffffff", bg = "#85B5BA" })
 vim.api.nvim_set_hl(0, "BlinkCmpKindTypeParameter", { fg = "#ffffff", bg = "#85B5BA" })
@@ -210,7 +200,7 @@ local function mode_indicator()
     }
 
     local mode = vim.api.nvim_get_mode().mode
-    local label, group = unpack(mode_map[mode] or { "OTHER", ""})
+    local label, group = unpack(mode_map[mode] or { "OTHER", "" })
 
     return "%#" .. group .. "#" .. "▎ " .. label .. " %* "
 end
@@ -218,7 +208,8 @@ end
 local function statusline()
     return table.concat {
         mode_indicator(),
-        "%f %m %r",
+        "%f %r",
+        "%#StlAccent#%m%* ",
         git_branch(),
 
         "%=",
