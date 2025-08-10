@@ -13,6 +13,7 @@ vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
 vim.o.splitbelow = true
 vim.o.splitright = true
+vim.o.scrolloff = 8
 
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
@@ -38,6 +39,8 @@ vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#313134", bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "LineNr", { link = "Comment" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Comment" })
 
@@ -96,16 +99,12 @@ vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>')
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>')
 
 -- Autocommands (from NTBBloodbath's Neovim)
-local function preserve_position()
-    if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
-        vim.cmd("normal! g'\"")
-    end
-end
-
 vim.api.nvim_create_autocmd("BufReadPost", {
     pattern = "*",
     callback = function()
-        preserve_position()
+        if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+            vim.cmd("normal! g'\"")
+        end
     end,
 })
 
