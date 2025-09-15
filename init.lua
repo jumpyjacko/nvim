@@ -7,7 +7,7 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.swapfile = false
-vim.o.timeoutlen = 150
+vim.o.timeoutlen = 180
 vim.o.signcolumn = "yes"
 vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
@@ -75,6 +75,9 @@ require "blink.cmp".setup({
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
         ['<CR>'] = { 'accept', 'fallback' },
         ['<Esc>'] = { 'cancel', 'fallback' },
+    },
+    sources = {
+        per_filetype = { typst = { 'lsp', 'path' } }
     }
 })
 
@@ -108,7 +111,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end,
 })
 
-vim.api.nvim_create_autocmd("VimResized", {
+vim.api.nvim_create_autocmd("VimResized", { -- Even window splits
     pattern = "*",
     command = "wincmd =",
 })
@@ -116,6 +119,13 @@ vim.api.nvim_create_autocmd("VimResized", {
 vim.api.nvim_create_autocmd("FocusGained", {
     pattern = "<buffer>",
     command = "checktime",
+})
+
+vim.api.nvim_create_autocmd("BufEnter", { -- No comment on newlines
+	pattern = "*",
+	callback = function()
+		vim.opt.formatoptions:remove({ "c", "r", "o" })
+	end,
 })
 
 -- blink.cmp completion highlights
@@ -200,7 +210,7 @@ end
 local function statusline()
     return table.concat {
         mode_indicator(),
-        "%f %r",
+        "%t %r",
         "%#StlAccent#%m%* ",
         git_branch(),
 
