@@ -24,6 +24,7 @@ vim.pack.add({
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+    { src = "https://github.com/folke/zen-mode.nvim" },
     {
         src = "https://github.com/Saghen/blink.cmp",
         version = vim.version.range('v1.*'),
@@ -100,6 +101,8 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 
 vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>')
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>')
+
+vim.keymap.set('n', '<leader>z', ':ZenMode<CR>')
 
 -- Autocommands (from NTBBloodbath's Neovim)
 vim.api.nvim_create_autocmd("BufReadPost", {
