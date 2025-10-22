@@ -125,10 +125,10 @@ vim.api.nvim_create_autocmd("FocusGained", {
 })
 
 vim.api.nvim_create_autocmd("BufEnter", { -- No comment on newlines
-	pattern = "*",
-	callback = function()
-		vim.opt.formatoptions:remove({ "c", "r", "o" })
-	end,
+    pattern = "*",
+    callback = function()
+        vim.opt.formatoptions:remove({ "c", "r", "o" })
+    end,
 })
 
 -- blink.cmp completion highlights
@@ -227,3 +227,11 @@ _G.statusline = statusline
 
 vim.o.statusline = "%!v:lua.statusline()"
 vim.o.showmode = false
+
+-- typst
+vim.lsp.config("tinymist", {
+    settings = {
+        formatterMode = "typstyle",
+        exportPdf = "onSave",
+    }
+})

@@ -1,0 +1,35 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "rev": "327fff9",
+      "version": "1.0.0 - 2.0.0"
+    },
+    "gitsigns.nvim": {
+      "rev": "20ad441"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "2304ff6"
+    },
+    "mason.nvim": {
+      "rev": "ad7146a"
+    },
+    "mini.pick": {
+      "rev": "bb764a5"
+    },
+    "nvim-autopairs": {
+      "rev": "7a2c97c"
+    },
+    "nvim-lspconfig": {
+      "rev": "e5c61b0"
+    },
+    "nvim-treesitter": [],
+    "oil.nvim": {
+      "rev": "7e1cd77"
+    },
+    "oldworld.nvim": [],
+    "vim-tidal": [],
+    "zen-mode.nvim": {
+      "rev": "438a59c"
+    }
+  }
+}
