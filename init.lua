@@ -24,6 +24,7 @@ vim.pack.add({
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+    { src = "https://github.com/j-hui/fidget.nvim" },
     { src = "https://github.com/folke/zen-mode.nvim" },
     {
         src = "https://github.com/Saghen/blink.cmp",
@@ -50,6 +51,7 @@ require "mini.pick".setup()
 require "nvim-autopairs".setup()
 require "mason".setup()
 require "mason-lspconfig".setup()
+require "fidget".setup()
 require "oil".setup()
 require "nvim-treesitter.configs".setup({ highlight = { enable = true } })
 require "blink.cmp".setup({

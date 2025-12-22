@@ -4,6 +4,7 @@
       "rev": "327fff9",
       "version": "1.0.0 - 2.0.0"
     },
+    "fidget.nvim": [],
     "gitsigns.nvim": {
       "rev": "20ad441"
     },
