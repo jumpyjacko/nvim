@@ -104,7 +104,7 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>')
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>')
 
-vim.keymap.set('n', '<leader>z', ':ZenMode<CR>')
+vim.keymap.set('n', '<leader>z', ':lua require("zen-mode").toggle({window = { width = .65 }, plugins = { options = { showcmd = true, laststatus = 3 } }})<CR>')
 
 -- Autocommands (from NTBBloodbath's Neovim)
 vim.api.nvim_create_autocmd("BufReadPost", {
