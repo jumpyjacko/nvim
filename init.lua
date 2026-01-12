@@ -31,6 +31,7 @@ vim.pack.add({
         version = vim.version.range('v1.*'),
     },
     { src = "https://github.com/dgox16/oldworld.nvim" },
+    { src = "https://github.com/vyfor/cord.nvim" },
 })
 
 vim.cmd("colorscheme oldworld")
@@ -236,4 +237,13 @@ vim.lsp.config("tinymist", {
         formatterMode = "typstyle",
         exportPdf = "onSave",
     }
+})
+
+-- Discord RPC
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(opts)
+    if opts.data.spec.name == 'cord.nvim' and opts.data.kind == 'update' then 
+      vim.cmd 'Cord update'
+    end
+  end
 })

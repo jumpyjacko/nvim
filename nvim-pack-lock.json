@@ -4,6 +4,10 @@
       "rev": "327fff9",
       "version": "1.0.0 - 2.0.0"
     },
+    "cord.nvim": {
+      "rev": "7483e9c",
+      "src": "https://github.com/vyfor/cord.nvim"
+    },
     "fidget.nvim": [],
     "gitsigns.nvim": {
       "rev": "20ad441"
