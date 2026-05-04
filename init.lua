@@ -20,12 +20,13 @@ vim.pack.add({
     { src = "https://github.com/echasnovski/mini.pick" },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    -- { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
     { src = "https://github.com/j-hui/fidget.nvim" },
     { src = "https://github.com/folke/zen-mode.nvim" },
+    { src = "https://github.com/brenoprata10/nvim-highlight-colors" },
     {
         src = "https://github.com/Saghen/blink.cmp",
         version = vim.version.range('v1.*'),
@@ -54,7 +55,8 @@ require "mason".setup()
 require "mason-lspconfig".setup()
 require "fidget".setup()
 require "oil".setup()
-require "nvim-treesitter.configs".setup({ highlight = { enable = true } })
+require "nvim-highlight-colors".setup()
+-- require "nvim-treesitter.configs".setup({ highlight = { enable = true } })
 require "blink.cmp".setup({
     completion = {
         documentation = { auto_show = true },
@@ -85,6 +87,13 @@ require "blink.cmp".setup({
     }
 })
 
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = true,
+    severity_sort = true,
+})
+
 -- Mappings
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
@@ -105,7 +114,8 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>')
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>')
 
-vim.keymap.set('n', '<leader>z', ':lua require("zen-mode").toggle({window = { width = .65 }, plugins = { options = { showcmd = true, laststatus = 3 } }})<CR>')
+vim.keymap.set('n', '<leader>z',
+    ':lua require("zen-mode").toggle({window = { width = .65 }, plugins = { options = { showcmd = true, laststatus = 3 } }})<CR>')
 
 -- Autocommands (from NTBBloodbath's Neovim)
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -241,9 +251,9 @@ vim.lsp.config("tinymist", {
 
 -- Discord RPC
 vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(opts)
-    if opts.data.spec.name == 'cord.nvim' and opts.data.kind == 'update' then 
-      vim.cmd 'Cord update'
+    callback = function(opts)
+        if opts.data.spec.name == 'cord.nvim' and opts.data.kind == 'update' then
+            vim.cmd 'Cord update'
+        end
     end
-  end
 })
