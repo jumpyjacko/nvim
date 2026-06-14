@@ -17,6 +17,7 @@ vim.o.scrolloff = 8
 
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
+    { src = "https://github.com/stevearc/quicker.nvim" },
     { src = "https://github.com/echasnovski/mini.pick" },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
@@ -55,6 +56,7 @@ require "mason".setup()
 require "mason-lspconfig".setup()
 require "fidget".setup()
 require "oil".setup()
+require "quicker".setup()
 require "nvim-highlight-colors".setup()
 -- require "nvim-treesitter.configs".setup({ highlight = { enable = true } })
 require "blink.cmp".setup({
@@ -103,6 +105,7 @@ vim.keymap.set("i", "NE", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>lq', vim.lsp.buf.references)
 vim.keymap.set('n', '?', vim.diagnostic.open_float)
 
 vim.keymap.set('n', '<leader>ff', ":Pick files<CR>")

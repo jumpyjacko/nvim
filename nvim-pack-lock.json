@@ -57,6 +57,10 @@
       "rev": "db072a0bd2c90035fc3a57a73014cb54d3902f1f",
       "src": "https://github.com/dgox16/oldworld.nvim"
     },
+    "quicker.nvim": {
+      "rev": "4a6883cb13fe097a20a046eb55f6dffd239276e3",
+      "src": "https://github.com/stevearc/quicker.nvim"
+    },
     "tiny-glimmer.nvim": {
       "rev": "cc285167914e947fc130523d02927fdaf24636a6",
       "src": "https://github.com/rachartier/tiny-glimmer.nvim"
