@@ -79,8 +79,6 @@ require "blink.cmp".setup({
     signature = { enabled = true },
     keymap = {
         preset = 'default',
-        ['<Tab>'] = { 'select_next', 'fallback' },
-        ['<S-Tab>'] = { 'select_prev', 'fallback' },
         ['<CR>'] = { 'accept', 'fallback' },
         ['<Esc>'] = { 'cancel', 'fallback' },
     },
