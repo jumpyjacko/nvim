@@ -21,7 +21,7 @@ vim.pack.add({
     { src = "https://github.com/echasnovski/mini.pick" },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
-    -- { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
@@ -58,7 +58,7 @@ require "fidget".setup()
 require "oil".setup()
 require "quicker".setup()
 require "nvim-highlight-colors".setup()
--- require "nvim-treesitter.configs".setup({ highlight = { enable = true } })
+require("tree-sitter-manager").setup()
 require "blink.cmp".setup({
     completion = {
         documentation = { auto_show = true },
