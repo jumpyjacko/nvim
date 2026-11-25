@@ -56,7 +56,24 @@ require "mason".setup()
 require "mason-lspconfig".setup()
 require "fidget".setup()
 require "oil".setup()
-require "quicker".setup()
+require "quicker".setup({
+    keys = {
+        {
+            ">",
+            function()
+                require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
+            end,
+            desc = "Expand quickfix context",
+        },
+        {
+            "<",
+            function()
+                require("quicker").collapse()
+            end,
+            desc = "Collapse quickfix context",
+        },
+    },
+})
 require "nvim-highlight-colors".setup()
 require("tree-sitter-manager").setup()
 require "blink.cmp".setup({
@@ -111,6 +128,9 @@ vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
 vim.keymap.set('n', '?', vim.diagnostic.open_float)
+
+vim.keymap.set('n', '<leader>oq', function() require("quicker").toggle() end);
+vim.keymap.set('n', '<leader>ol', function() require("quicker").toggle({ loclist = true }) end);
 
 vim.keymap.set('n', '<leader>ff', ":Pick files<CR>")
 vim.keymap.set('n', '<leader>fh', ":Pick help<CR>")
