@@ -1,48 +1,52 @@
 {
   "plugins": {
+    "beancount.nvim": {
+      "rev": "7040bd4402289ee20c033a9d1f243ec4d44942dd",
+      "src": "https://github.com/hxueh/beancount.nvim"
+    },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/Saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
     "cord.nvim": {
-      "rev": "0be090969e978f7442870ef227e09eff7bf3480d",
+      "rev": "85f295e43550bc968b66d95d8bfd6e12bb17df08",
       "src": "https://github.com/vyfor/cord.nvim"
     },
     "fidget.nvim": {
-      "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
+      "rev": "9e0201673e08e997e7cf52afca5565c70bd117f3",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "6d808f99bd63303646794406e270bd553ad7792e",
+      "rev": "166c03131e6a3528f692dd89f37668d991f17baa",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "lsp-progress.nvim": {
-      "rev": "f6d5af10563b895ff846346f57cbd4451439f4c1",
+      "rev": "b77b6ce147b3fcf4e851f0f9ecc3d42e9fd86bf8",
       "src": "https://github.com/linrongbin16/lsp-progress.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "0c2823e0418f3d9230ff8b201c976e84de1cb401",
+      "rev": "761d376b5fbe6b21f659432ffadc1205c660176c",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
-      "rev": "cb8445f8ce85d957416c106b780efd51c6298f89",
+      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.pick": {
-      "rev": "437d44eb57312f23e6b931704694fc294922cd88",
+      "rev": "fda834789d64858c15e2a875770b3fca17c3d10c",
       "src": "https://github.com/echasnovski/mini.pick"
     },
     "nvim-autopairs": {
-      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
+      "rev": "3172f40c16563db871a58f20d205c710ad782311",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-highlight-colors": {
-      "rev": "e2cb220",
+      "rev": "e4c7af0211866162d999ce0bdd6a029302e19139",
       "src": "https://github.com/brenoprata10/nvim-highlight-colors"
     },
     "nvim-lspconfig": {
-      "rev": "bf5abe69c1874531f359a822d0cff4d73e26113f",
+      "rev": "76f4cafc49677a34dc8ad8142b773d78ab4a041e",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -50,7 +54,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "oil.nvim": {
-      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
+      "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "oldworld.nvim": {
@@ -62,8 +66,12 @@
       "src": "https://github.com/stevearc/quicker.nvim"
     },
     "tiny-glimmer.nvim": {
-      "rev": "cc285167914e947fc130523d02927fdaf24636a6",
+      "rev": "b35d4f7b0eaedb75ff99fa694f4d1ea2ce8ce6c8",
       "src": "https://github.com/rachartier/tiny-glimmer.nvim"
+    },
+    "tree-sitter-manager.nvim": {
+      "rev": "05c2328f1ffd84f1944f9ff9aeb0d5032c6e5c1e",
+      "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     },
     "vim-tidal": {
       "rev": "e440fe5bdfe07f805e21e6872099685d38e8b761",
